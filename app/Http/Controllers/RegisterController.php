@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\FilesHelper;
 use App\Models\Register;
+use App\Service\Payment\Checkout;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -43,7 +44,17 @@ class RegisterController extends Controller
      */
     private function concatenateName(array $names): string
     {
-        return $names['first_name'] . ' ' . $names['father_name']. ' ' . $names['grandfather_name']. ' ' . $names['nickname'];
+        return $names['first_name'] . ' ' . $names['father_name'] . ' ' . $names['grandfather_name'] . ' ' . $names['nickname'];
+    }
+
+    /**
+     * @param string $token
+     * @return string
+     */
+    public function payment(string $token): string
+    {
+        $data = (new Checkout())->payment($token);
+        return $data->status;
     }
 
     /**
@@ -81,13 +92,5 @@ class RegisterController extends Controller
             'student_id' => ['sometimes', 'string'],
             'parent_id' => ['sometimes', 'string'],
         ]);
-    }
-
-    public function payment(string $token)
-    {
-        if ($token) {
-            return'yes';
-        }
-        return'no';
     }
 }

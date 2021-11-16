@@ -45,11 +45,11 @@ class Checkout
         return $data;
     }
 
-    public function payment()
+    public function payment(string $token = null)
     {
-
+        $token = $token ?? $this->requestToken();
         $checkout = new CheckoutApi($this->secret, -1, $this->public);
-        $method = new TokenSource($this->requestToken());
+        $method = new TokenSource($token);
 
         $payment = new Payment($method, 'USD');
         $payment->customer = $this->customer('john.smith@email.com', 'John Smith');
@@ -88,7 +88,6 @@ class Checkout
 
     /**
      * @return string
-     * @throws GuzzleException
      */
     private function requestToken(): string
     {

@@ -2,8 +2,15 @@
 var payButton = document.getElementById("pay-button");
 var form = document.getElementById("payment-form");
 
-Frames.init("pk_test_8ac41c0d-fbcc-4ae3-a771-31ea533a2beb");
-
+Frames.init({
+    publicKey: 'pk_test_4ad7b6d1-a4b0-442d-a230-5505ec5ca43b',
+    localization: {
+        cardNumberPlaceholder: "Card number",
+        expiryMonthPlaceholder: "MM",
+        expiryYearPlaceholder: "YY",
+        cvvPlaceholder: "CVV",
+    }
+})
 var logos = generateLogos();
 
 function generateLogos() {
