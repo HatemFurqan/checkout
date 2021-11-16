@@ -1650,11 +1650,7 @@
                             </li>
                             <li class="form-line jf-required" data-type="control_radio" id="id_83">
                                 <label class="form-label form-label-top form-label-auto" id="label_83" for="input_83">
-                                    تعهد ولي الأمر
-
-                                    <span class="form-required">
-            *
-          </span></label>
+                                    تعهد ولي الأمر<span class="form-required">*</span></label>
                                 <div id="cid_83" class="form-input-wide jf-required">
                                     <div class="form-single-column" role="group" aria-labelledby="label_83"
                                          data-component="radio">
@@ -1709,6 +1705,81 @@
                         </ul>
                     </div>
                 </form>
+                <form
+                    dir="ltr"
+                    id="payment-form"
+                    method="POST"
+                    action="https://merchant.com/charge-card"
+                >
+                    <label for="card-number">Card number</label>
+                    <div class="input-container card-number">
+                        <div class="icon-container">
+                            <img
+                                id="icon-card-number"
+                                src="images/card-icons/card.svg"
+                                alt="PAN"
+                            />
+                        </div>
+                        <div class="card-number-frame"></div>
+                        <div class="icon-container payment-method">
+                            <img id="logo-payment-method" />
+                        </div>
+                        <div class="icon-container">
+                            <img id="icon-card-number-error" src="images/card-icons/error.svg" />
+                        </div>
+                    </div>
+
+                    <div class="date-and-code">
+                        <div>
+                            <label for="expiry-date">Expiry date</label>
+                            <div class="input-container expiry-date">
+                                <div class="icon-container">
+                                    <img
+                                        id="icon-expiry-date"
+                                        src="images/card-icons/exp-date.svg"
+                                        alt="Expiry date"
+                                    />
+                                </div>
+                                <div class="expiry-date-frame"></div>
+                                <div class="icon-container">
+                                    <img
+                                        id="icon-expiry-date-error"
+                                        src="images/card-icons/error.svg"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="cvv">Security code</label>
+                            <div class="input-container cvv">
+                                <div class="icon-container">
+                                    <img id="icon-cvv" src="images/card-icons/cvv.svg" alt="CVV" />
+                                </div>
+                                <div class="cvv-frame"></div>
+                                <div class="icon-container">
+                                    <img id="icon-cvv-error" src="images/card-icons/error.svg" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="pay-button" disabled="">
+                        PAY GBP 50.00
+                    </button>
+
+                    <div>
+                        <span class="error-message error-message__card-number"></span>
+                        <span class="error-message error-message__expiry-date"></span>
+                        <span class="error-message error-message__cvv"></span>
+                    </div>
+
+                    <p class="success-payment-message"></p>
+                </form>
+                <link rel="stylesheet" href="normalize.css" />
+                <link rel="stylesheet" href="style.css" />
+                <script src="https://cdn.checkout.com/js/framesv2.min.js"></script>
+                <script src="app.js"></script>
             </div>
         </div>
     </div>

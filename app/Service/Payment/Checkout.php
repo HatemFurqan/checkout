@@ -97,7 +97,7 @@ class Checkout
         $token = $checkout->tokens()
             ->request($card);
         return $token->token;
-        // OLD Way
+// OLD Way
 //        $client = new Client(['base_uri' => $this->sandbox]);
 //
 //        $response = $client->request('POST', '/tokens', [

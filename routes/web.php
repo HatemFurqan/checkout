@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
-/*      
+/*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -16,8 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/payment', function () {
-    $data = (new \App\Service\Payment\Checkout())->payment();
-    dd($data);
-});
-Route::post('/submit', \App\Http\Controllers\RegisterController::class)->name('submit');
+Route::get('/payment/{token}', [RegisterController::class, 'Payment'])->name('payment');
+Route::post('/submit', RegisterController::class)->name('submit');

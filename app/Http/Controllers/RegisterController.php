@@ -82,4 +82,12 @@ class RegisterController extends Controller
             'parent_id' => ['sometimes', 'string'],
         ]);
     }
+
+    public function payment(string $token)
+    {
+        if ($token) {
+            return'yes';
+        }
+        return'no';
+    }
 }
