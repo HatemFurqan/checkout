@@ -15,11 +15,11 @@ class CreateRegistersTable extends Migration
     {
         Schema::create('registers', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('sex')->comment('1 mean man, 2 mean woman')->nullable();
+            $table->string('sex')->nullable();
             $table->string('period')->nullable();
-            $table->date('dob')->nullable();
-            $table->tinyInteger('payment_method')->comment('1 mean credit-card, 2 mean bank transfer')->nullable();
-            $table->integer('serial_number')->nullable();
+            $table->string('dob')->nullable();
+            $table->string('payment_method')->nullable();
+            $table->string('serial_number')->nullable();
             $table->string('name')->nullable();
             $table->string('nationality')->nullable();
             $table->string('country_of_residence')->nullable();

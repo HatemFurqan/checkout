@@ -19,8 +19,11 @@ class RegisterController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $this->validation($request);
+//        $this->validation($request);
         $data = $request->all();
+
+        $data['name'] = $this->concatenateName($data);
+
         if ($request->hasFile('student_id')) {
             $data['student_id'] = $this->fileUpload($request->file('student_id'), 'files');
         }
@@ -29,8 +32,18 @@ class RegisterController extends Controller
             $data['parent_id'] = $this->fileUpload($request->file('parent_id'), 'files');
         }
 
+        dd($data);
         Register::create($data);
         return view('welcome');
+    }
+
+    /**
+     * @param array $names
+     * @return string
+     */
+    private function concatenateName(array $names): string
+    {
+        return $names['first_name'] . ' ' . $names['father_name']. ' ' . $names['grandfather_name']. ' ' . $names['nickname'];
     }
 
     /**
@@ -39,34 +52,34 @@ class RegisterController extends Controller
     private function validation(Request $request)
     {
         $request->validate([
-            'sex' => ['sometime', 'string'],
-            'period' => ['sometime', 'string'],
-            'dob' => ['sometime', 'string'],
-            'payment_method' => ['sometime', 'string'],
-            'serial_number' => ['sometime', 'string'],
-            'name' => ['sometime', 'string'],
-            'nationality' => ['sometime', 'string'],
-            'country_of_residence' => ['sometime', 'string'],
-            'city' => ['sometime', 'string'],
-            'address' => ['sometime', 'string'],
-            'post_code' => ['sometime', 'string'],
-            'place_of_birth' => ['sometime', 'string'],
-            'id_passport_number' => ['sometime', 'string'],
-            'student_fathers_mobile_number' => ['sometime', 'string'],
-            'student_mothers_mobile_number' => ['sometime', 'string'],
-            'student_fathers_email' => ['sometime', 'string'],
-            'student_mothers_email' => ['sometime', 'string'],
-            'preferred_language' => ['sometime', 'string'],
-            'student_fathers_name' => ['sometime', 'string'],
-            'student_fathers_employer' => ['sometime', 'string'],
-            'student_mothers_name' => ['sometime', 'string'],
-            'student_mothers_employer' => ['sometime', 'string'],
-            'student_social_status' => ['sometime', 'string'],
-            'student_disease' => ['sometime', 'string'],
-            'participated' => ['sometime', 'string'],
-            'al_nooraniah' => ['sometime', 'string'],
-            'student_id' => ['sometime', 'string'],
-            'parent_id' => ['sometime', 'string'],
+            'sex' => ['sometimes', 'string'],
+            'period' => ['sometimes', 'string'],
+            'dob' => ['sometimes', 'string'],
+            'payment_method' => ['sometimes', 'string'],
+            'serial_number' => ['sometimes', 'string'],
+            'name' => ['sometimes', 'string'],
+            'nationality' => ['sometimes', 'string'],
+            'country_of_residence' => ['sometimes', 'string'],
+            'city' => ['sometimes', 'string'],
+            'address' => ['sometimes', 'string'],
+            'post_code' => ['sometimes', 'string'],
+            'place_of_birth' => ['sometimes', 'string'],
+            'id_passport_number' => ['sometimes', 'string'],
+            'student_fathers_mobile_number' => ['sometimes', 'string'],
+            'student_mothers_mobile_number' => ['sometimes', 'string'],
+            'student_fathers_email' => ['sometimes', 'string'],
+            'student_mothers_email' => ['sometimes', 'string'],
+            'preferred_language' => ['sometimes', 'string'],
+            'student_fathers_name' => ['sometimes', 'string'],
+            'student_fathers_employer' => ['sometimes', 'string'],
+            'student_mothers_name' => ['sometimes', 'string'],
+            'student_mothers_employer' => ['sometimes', 'string'],
+            'student_social_status' => ['sometimes', 'string'],
+            'student_disease' => ['sometimes', 'string'],
+            'participated' => ['sometimes', 'string'],
+            'al_nooraniah' => ['sometimes', 'string'],
+            'student_id' => ['sometimes', 'string'],
+            'parent_id' => ['sometimes', 'string'],
         ]);
     }
 }

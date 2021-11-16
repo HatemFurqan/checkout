@@ -16,4 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::post('/submit', 'RegisterController@__invoke')->name('submit');
+Route::get('/payment', function () {
+    $data = (new \App\Service\Payment\Checkout())->payment();
+    dd($data);
+});
+Route::post('/submit', \App\Http\Controllers\RegisterController::class)->name('submit');
