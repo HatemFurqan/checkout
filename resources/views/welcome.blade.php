@@ -1796,7 +1796,6 @@
             $('#step-2').css('display', 'block');
             $('#step-3').css('display', 'none');
         }
-
     })
     $(document).on('click', '#form-pagebreak-back_206', function () {
         $('#cid_166').css('display', 'block');

@@ -56,7 +56,8 @@ class RegisterController extends Controller
     public function payment(string $token): string
     {
         $data = (new Checkout())->payment($token);
-        return $data->status;
+        dd($data);
+        return $data;
     }
 
     public function resubscribe(Request $request)
@@ -76,7 +77,6 @@ class RegisterController extends Controller
             return $student->name;
         }
         return response('not found', 404);
-
     }
 
     /**
