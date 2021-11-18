@@ -11,11 +11,6 @@ html {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-iframe {
-    /* This fixes a mobile Safari bug */
-    height: 38px !important;
-}
-
 #payment-form {
     width: 280px;
     margin: 0 auto;
@@ -74,9 +69,9 @@ label {
     padding-left: 40px;
 }
 
-div + button {
-    margin-top: 8px;
-}
+/*div + button {*/
+/*    margin-top: 8px;*/
+/*}*/
 
 .icon-container {
     position: absolute;

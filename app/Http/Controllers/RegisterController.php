@@ -6,9 +6,11 @@ use App\FilesHelper;
 use App\Models\Register;
 use App\Service\Payment\Checkout;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class RegisterController extends Controller
 {
@@ -18,7 +20,7 @@ class RegisterController extends Controller
      * @param Request $request
      * @return Application|Factory|View
      */
-    public function __invoke(Request $request)
+    public function register(Request $request)
     {
 //        $this->validation($request);
         $data = $request->all();
@@ -55,6 +57,26 @@ class RegisterController extends Controller
     {
         $data = (new Checkout())->payment($token);
         return $data->status;
+    }
+
+    public function resubscribe(Request $request)
+    {
+        dd($request->all());
+    }
+
+    /**
+     * @param Request $request
+     * @return Application|ResponseFactory|Response
+     */
+    public function checkStudentExists(Request $request)
+    {
+        $student = Register::find($request->get('student_id'));
+
+        if ($student) {
+            return $student->name;
+        }
+        return response('not found', 404);
+
     }
 
     /**

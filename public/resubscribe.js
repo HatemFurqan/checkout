@@ -138,18 +138,16 @@ Frames.addEventHandler(Frames.Events.CARD_TOKENIZED, onCardTokenized);
 
 function onCardTokenized(event) {
     var el = document.querySelector(".success-payment-message");
-    // el.innerHTML =
-    //   "Card tokenization completed<br>" +
-    //   'Your card token is: <span class="token">' +
-    //   event.token +
-    //   "</span>";
     el.innerHTML =
-        "payment completed<br>";
-    $.ajax({
-        url: "/payment/" + event.token, success: function (result) {
-            el.innerHTML = result;
-        }
-    });
+        "تم حفظ البيانات<br>";
+    $('payment_token').value = event.token;
+    setTimeout(function () {
+        let div = $('paymentModel');
+        div.removeClassName('show');
+        div.removeAttribute('style');
+        let modal_backdrop = $('modal-backdrop');
+        modal_backdrop.removeClassName('modal-backdrop show');
+    }, 2000)
 }
 
 Frames.addEventHandler(
