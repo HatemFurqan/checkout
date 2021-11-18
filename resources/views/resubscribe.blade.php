@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=1"/>
     <meta name="HandheldFriendly" content="true"/>
     <title>Furqan Center | Resubscribe</title>
-    <link href="/resubscribe/formCss.css?3.3.29058" rel="stylesheet" type="text/css"/>
-    <link type="text/css" rel="stylesheet" href="/resubscribe/nova.css?3.3.29058"/>
+    <link href="{{ asset('/resubscribe/formCss.css') }}" rel="stylesheet" type="text/css"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset('/resubscribe/nova.css') }}"/>
     <style type="text/css">@media print {
             .form-section {
                 display: inline !important
@@ -28,9 +28,9 @@
             }
         }</style>
     <link type="text/css" rel="stylesheet"
-          href="/resubscribe/566a91c2977cdfcd478b4567.css?themeRevisionID=5d713a7304e9ed3c13620001"/>
+          href="{{ asset('/resubscribe/566a91c2977cdfcd478b4567.css') }}"/>
     <link type="text/css" rel="stylesheet"
-          href="/resubscribe/payment_feature.css?3.3.29058"/>
+          href="{{ asset('/resubscribe/payment_feature.css') }}"/>
     <style type="text/css">
         .form-label-left {
             width: 150px;
@@ -1790,18 +1790,18 @@
         /* Injected CSS Code */
     </style>
     <link type="text/css" rel="stylesheet"
-          href="/resubscribe/form-submit-button-simple_blue.css?3.3.29058"/>
+          href="{{ asset('/resubscribe/form-submit-button-simple_blue.css') }}"/>
     <link type="text/css" rel="stylesheet"
-          href="/resubscribe/form-submit-button-simple_black.css?3.3.29058"/>
-    <script src="/resubscribe/prototype.forms.js" type="text/javascript"></script>
-    <script src="/resubscribe/jotform.forms.js?3.3.29058" type="text/javascript"></script>
-    <script src="/resubscribe/imageinfo.js?v=3.3.29058" type="text/javascript"></script>
-    <script src="/resubscribe/fileuploader.js?v=3.3.29058"></script>
-    <script defer src="/resubscribe/punycode.js"></script>
-    <script src="/resubscribe/promise-polyfill.js"></script>
-    <script src="/resubscribe/postMessage.js?3.3.29058" type="text/javascript"></script>
-    <script src="/resubscribe/WidgetsServer.js?v=1637003052205" type="text/javascript"></script>
-    <script src="/resubscribe/math-processor.js?v=3.3.29058" type="text/javascript"></script>
+          href="{{ asset('/resubscribe/form-submit-button-simple_black.css') }}"/>
+    <script src="{{ asset('/resubscribe/prototype.forms.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/resubscribe/jotform.forms.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/resubscribe/imageinfo.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/resubscribe/fileuploader.js') }}"></script>
+    <script defer src="{{ asset('/resubscribe/punycode.js') }}"></script>
+    <script src="{{ asset('/resubscribe/promise-polyfill.js') }}"></script>
+    <script src="{{ asset('/resubscribe/postMessage.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/resubscribe/WidgetsServer.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/resubscribe/math-processor.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
         JotForm.newDefaultTheme = false;
         JotForm.extendsNewTheme = false;
@@ -3047,16 +3047,15 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-<form class="jotform-form" action="{{ route('submit.re-subscribe') }}" method="post"
+<form class="jotform-form" id="form_submit" action="https://submit.jotformeu.com/submit/202213881363450/" method="post"
       enctype="multipart/form-data" name="form_202213881363450" id="202213881363450" accept-charset="utf-8"
       autocomplete="on">
-    @csrf
     <input type="hidden" name="formID" value="202213881363450"/>
     <input type="hidden" id="JWTContainer" value=""/>
     <input type="hidden" id="cardinalOrderNumber" value=""/>
     <div role="main" class="form-all">
         <link type="text/css" rel="stylesheet" media="all"
-              href="/resubscribe/lang-dd.css?3.3.29058"/>
+              href="https://cdn.jotfor.ms/wizards/languageWizard/custom-dropdown/css/lang-dd.css?3.3.29058"/>
         <div class="cont">
             <input type="text" id="input_language" name="input_language" style="display:none"/>
             <div class="language-dd" id="langDd" style="display:none">
@@ -3073,7 +3072,7 @@
                 </ul>
             </div>
         </div>
-        <script type="text/javascript" src="/resubscribe/formTranslation.v2.js?3.3.29058"></script>
+        <script type="text/javascript" src="https://cdn.jotfor.ms/js/formTranslation.v2.js?3.3.29058"></script>
         <ul class="form-section page-section">
             <li id="cid_258" class="form-input-wide" data-type="control_head">
                 <div class="form-header-group  header-large">
@@ -3124,7 +3123,7 @@
                      data-seperator="-" placeholder="dd-mm-yyyy" autoComplete="off"
                      aria-labelledby="label_186 sublabel_186_litemode"/>
               <img class=" newDefaultTheme-dateIcon icon-liteMode" alt="Pick a Date" id="input_186_pick"
-                   src="/calendar.png" data-component="datetime" aria-hidden="true"
+                   src="https://cdn.jotfor.ms/images/calendar.png" data-component="datetime" aria-hidden="true"
                    data-allow-time="No" data-version="v1"/>
               <label class="form-sub-label" for="lite_mode_186" id="sublabel_186_litemode" style="min-height:13px"
                      aria-hidden="false"> Date </label>
@@ -3493,12 +3492,100 @@
             </span>
                     </label>
                     <div id="cid_332" class="form-input-wide always-hidden jf-required">
-                        <select class="form-dropdown validate[required]" style="width:370px;" id="input_332"
+                        <select class="form-dropdown validate[required] section-select2" style="width:370px;" id="input_332"
                                 name="q332_input332">
                             <option value=""> ===اختر===</option>
                             <option value="بنين"> بنين</option>
                             <option value="بنات"> بنات</option>
                         </select>
+                    </div>
+                </li>
+                <li class="form-line always-hidden jf-required form-field-hidden" style="display:none;"
+                    data-type="control_widget" id="id_333">
+                    <label class="form-label form-label-top form-label-auto" id="label_333" for="input_333">
+                        الرقم التسلسلي:
+                        <span class="form-required">
+              *
+            </span>
+                    </label>
+                    <div id="cid_333" class="form-input-wide always-hidden jf-required">
+                        <div data-widget-name="Spreadsheet to form" style="width:100%;text-align:Right;overflow-x:auto"
+                             data-component="widget-field">
+                            <iframe data-client-id="591dafece4a223da050009f9" title="Spreadsheet to form"
+                                    frameBorder="0" scrolling="no" allowtransparency="true"
+                                    allow="geolocation; microphone; camera; autoplay; encrypted-media; fullscreen"
+                                    data-type="iframe" class="custom-field-frame" id="customFieldFrame_333" src=""
+                                    style="max-width:230px;border:none;width:100%;height:80px" data-width="230"
+                                    data-height="80">
+                            </iframe>
+                            <div class="widget-inputs-wrapper">
+                                <input type="hidden" id="input_333" class="form-hidden form-widget widget-required "
+                                       name="q333_input333" value=""/>
+                                <input type="hidden" id="widget_settings_333" class="form-hidden form-widget-settings"
+                                       value="%5B%7B%22name%22%3A%22excel%22%2C%22value%22%3A%7B%22name%22%3A%22%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA%20%D8%A8%D9%86%D9%8A%D9%86%20%202021-10-07.xlsx%22%2C%22type%22%3A%22application%2Fvnd.openxmlformats-officedocument.spreadsheetml.sheet%22%2C%22size%22%3A743368%2C%22url%22%3A%22www.jotform.com%22%2C%22base%22%3A%22%25D8%25A8%25D9%258A%25D8%25A7%25D9%2586%25D8%25A7%25D8%25AA%2520%25D8%25A8%25D9%2586%25D9%258A%25D9%2586%25202021-10-07.615f4f8588e0b9.17216758.xlsx%22%2C%22path%22%3A%22%2Fuploads%2FAbdhafez1996%2Fform_files%2F%25D8%25A8%25D9%258A%25D8%25A7%25D9%2586%25D8%25A7%25D8%25AA%2520%25D8%25A8%25D9%2586%25D9%258A%25D9%2586%25202021-10-07.615f4f8588e0b9.17216758.xlsx%22%2C%22owner%22%3A%22Abdhafez1996%22%7D%7D%2C%7B%22name%22%3A%22codeColumn%22%2C%22value%22%3A%22A%22%7D%2C%7B%22name%22%3A%22labelsRow%22%2C%22value%22%3A%221%22%7D%2C%7B%22name%22%3A%22fillBtnText%22%2C%22value%22%3A%22%D8%A8%D8%AD%D8%AB%22%7D%2C%7B%22name%22%3A%22loadingText%22%2C%22value%22%3A%22Loading...%22%7D%2C%7B%22name%22%3A%22validCodeTxt%22%2C%22value%22%3A%22.%22%7D%2C%7B%22name%22%3A%22invalidCodeTxt%22%2C%22value%22%3A%22%D8%B1%D9%82%D9%85%20%D8%A7%D9%84%D8%B7%D8%A7%D9%84%D8%A8%20%D8%BA%D9%8A%D8%B1%20%D8%B5%D8%AD%D9%8A%D8%AD%20%D8%A3%D9%88%20%D8%BA%D9%8A%D8%B1%20%D9%85%D9%81%D8%B9%D9%84%22%7D%2C%7B%22name%22%3A%22submitInput%22%2C%22value%22%3A%22Yes%22%7D%2C%7B%22name%22%3A%22customCSS%22%2C%22value%22%3A%22%23access-code%5Cn%5Cn%7B%5Cn%5Cncolor%3A%20red%20!important%3B%20%5Cnbackground-color%3A%20%23ffffce%20!important%3B%5Cn%5Cnheight%3A%2032px%20!important%3B%5Cn%5Cn%5Cnborder-radius%3A6px%3B%5Cn%5Cntext-align%3A%20center%3B%5Cn%5Cn%7D%5Cn%5Cn%23autofill%5Cn%5Cn%7B%5Cn%5Cnbackground-color%3A%230000CD%3B%5Cn%5Cncolor%3Awhite%3B%5Cn%5Cnborder%3A%202px%20outset%20%3B%5Cn%5Cnborder-radius%3A%206pt%3B%5Cn%5Cntext-align%3Acenter%3B%5Cn%5Cnfont-weight%3A%20600%3B%5Cn%5Cn%7D%22%7D%5D"
+                                       data-version="2"/>
+                            </div>
+                            <script type="text/javascript">
+                                setTimeout(function () {
+                                    var _cFieldFrame = document.getElementById("customFieldFrame_333");
+                                    if (_cFieldFrame) {
+                                        _cFieldFrame.onload = function () {
+                                            if (typeof widgetFrameLoaded !== 'undefined') {
+                                                widgetFrameLoaded(333, {
+                                                    "formID": 202213881363450
+                                                })
+                                            }
+                                        };
+                                        _cFieldFrame.src = "//prepopulator.jotform.io/?qid=333&ref=" + encodeURIComponent(window.location.protocol + "//" + window.location.host) + '' + '' + '&injectCSS=' + encodeURIComponent(window.location.search.indexOf("ndt=1") > -1);
+                                        _cFieldFrame.addClassName("custom-field-frame-rendered");
+                                    }
+                                }, 0);
+                            </script>
+                        </div>
+                    </div>
+                </li>
+                <li class="form-line always-hidden jf-required form-field-hidden" style="display:none;"
+                    data-type="control_widget" id="id_334">
+                    <label class="form-label form-label-top form-label-auto" id="label_334" for="input_334">
+                        الرقم التسلسلي:
+                        <span class="form-required">
+              *
+            </span>
+                    </label>
+                    <div id="cid_334" class="form-input-wide always-hidden jf-required">
+                        <div data-widget-name="Spreadsheet to form" style="width:100%;text-align:Right;overflow-x:auto"
+                             data-component="widget-field">
+                            <iframe data-client-id="591dafece4a223da050009f9" title="Spreadsheet to form"
+                                    frameBorder="0" scrolling="no" allowtransparency="true"
+                                    allow="geolocation; microphone; camera; autoplay; encrypted-media; fullscreen"
+                                    data-type="iframe" class="custom-field-frame" id="customFieldFrame_334" src=""
+                                    style="max-width:230px;border:none;width:100%;height:80px" data-width="230"
+                                    data-height="80">
+                            </iframe>
+                            <div class="widget-inputs-wrapper">
+                                <input type="hidden" id="input_334" class="form-hidden form-widget widget-required "
+                                       name="q334_input334" value=""/>
+                                <input type="hidden" id="widget_settings_334" class="form-hidden form-widget-settings"
+                                       value="%5B%7B%22name%22%3A%22excel%22%2C%22value%22%3A%7B%22name%22%3A%22%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA%20%D8%A8%D9%86%D8%A7%D8%AA%20%202021-10-07.xlsx%22%2C%22type%22%3A%22application%2Fvnd.openxmlformats-officedocument.spreadsheetml.sheet%22%2C%22size%22%3A546263%2C%22url%22%3A%22www.jotform.com%22%2C%22base%22%3A%22%25D8%25A8%25D9%258A%25D8%25A7%25D9%2586%25D8%25A7%25D8%25AA%2520%25D8%25A8%25D9%2586%25D8%25A7%25D8%25AA%25202021-10-07.615f4f8f069695.91139060.xlsx%22%2C%22path%22%3A%22%2Fuploads%2FAbdhafez1996%2Fform_files%2F%25D8%25A8%25D9%258A%25D8%25A7%25D9%2586%25D8%25A7%25D8%25AA%2520%25D8%25A8%25D9%2586%25D8%25A7%25D8%25AA%25202021-10-07.615f4f8f069695.91139060.xlsx%22%2C%22owner%22%3A%22Abdhafez1996%22%7D%7D%2C%7B%22name%22%3A%22codeColumn%22%2C%22value%22%3A%22A%22%7D%2C%7B%22name%22%3A%22labelsRow%22%2C%22value%22%3A%221%22%7D%2C%7B%22name%22%3A%22fillBtnText%22%2C%22value%22%3A%22%D8%A8%D8%AD%D8%AB%22%7D%2C%7B%22name%22%3A%22loadingText%22%2C%22value%22%3A%22Loading...%22%7D%2C%7B%22name%22%3A%22validCodeTxt%22%2C%22value%22%3A%22.%22%7D%2C%7B%22name%22%3A%22invalidCodeTxt%22%2C%22value%22%3A%22%D8%B1%D9%82%D9%85%20%D8%A7%D9%84%D8%B7%D8%A7%D9%84%D8%A8%20%D8%BA%D9%8A%D8%B1%20%D8%B5%D8%AD%D9%8A%D8%AD%20%D8%A3%D9%88%20%D8%BA%D9%8A%D8%B1%20%D9%85%D9%81%D8%B9%D9%84%22%7D%2C%7B%22name%22%3A%22submitInput%22%2C%22value%22%3A%22Yes%22%7D%2C%7B%22name%22%3A%22customCSS%22%2C%22value%22%3A%22%23access-code%5Cn%5Cn%7B%5Cn%5Cncolor%3A%20red%20!important%3B%20%5Cnbackground-color%3A%20%23ffffce%20!important%3B%5Cn%5Cnheight%3A%2032px%20!important%3B%5Cn%5Cn%5Cnborder-radius%3A6px%3B%5Cn%5Cntext-align%3A%20center%3B%5Cn%5Cn%7D%5Cn%5Cn%23autofill%5Cn%5Cn%7B%5Cn%5Cnbackground-color%3A%230000CD%3B%5Cn%5Cncolor%3Awhite%3B%5Cn%5Cnborder%3A%202px%20outset%20%3B%5Cn%5Cnborder-radius%3A%206pt%3B%5Cn%5Cntext-align%3Acenter%3B%5Cn%5Cnfont-weight%3A%20600%3B%5Cn%5Cn%7D%22%7D%5D"
+                                       data-version="2"/>
+                            </div>
+                            <script type="text/javascript">
+                                setTimeout(function () {
+                                    var _cFieldFrame = document.getElementById("customFieldFrame_334");
+                                    if (_cFieldFrame) {
+                                        _cFieldFrame.onload = function () {
+                                            if (typeof widgetFrameLoaded !== 'undefined') {
+                                                widgetFrameLoaded(334, {
+                                                    "formID": 202213881363450
+                                                })
+                                            }
+                                        };
+                                        _cFieldFrame.src = "//prepopulator.jotform.io/?qid=334&ref=" + encodeURIComponent(window.location.protocol + "//" + window.location.host) + '' + '' + '&injectCSS=' + encodeURIComponent(window.location.search.indexOf("ndt=1") > -1);
+                                        _cFieldFrame.addClassName("custom-field-frame-rendered");
+                                    }
+                                }, 0);
+                            </script>
+                        </div>
                     </div>
                 </li>
                 <li class="form-line always-hidden jf-required form-field-hidden" style="display:none;"
@@ -3865,13 +3952,6 @@
                         </div>
                     </div>
                 </li>
-                <li class="form-line form-field-hidden" style="display:none;" data-type="control_text" id="id_296">
-                    <div id="cid_296" class="form-input-wide">
-                        <div id="text_296" class="form-html" data-component="text">
-
-                        </div>
-                    </div>
-                </li>
                 <li class="form-line always-hidden form-field-hidden" style="display:none;" data-type="control_text"
                     id="id_317">
                     <div id="cid_317" class="form-input-wide always-hidden">
@@ -3903,7 +3983,7 @@
             </span>
                     </label>
                     <div id="cid_195" class="form-input-wide jf-required">
-                        <select class="form-dropdown validate[required]" style="width:370px;" id="input_195"
+                        <select class="form-dropdown validate[required] section-select" style="width:370px;" id="input_195"
                                 name="q195_input195">
                             <option value=""> ===اختر===</option>
                             <option value="بنين"> بنين</option>
@@ -3922,57 +4002,85 @@
                     <div id="cid_235" class="form-input-wide always-hidden jf-required">
                         <div data-widget-name="Spreadsheet to form" style="width:100%;text-align:Right;overflow-x:auto"
                              data-component="widget-field">
-                            <style>
-                                #access-code {
-                                    color: red !important;
-                                    background-color: #ffffce !important;
-                                    height: 32px !important;
-                                    border-radius: 6px;
-                                    text-align: center;
-                                    width: 100%;
-                                    box-sizing: border-box;
-                                    padding: 5px;
-                                }
+                            <div id="cid_235" class="form-input-wide always-hidden jf-required">
+                                <div data-widget-name="Spreadsheet to form" style="width:100%;text-align:Right;overflow-x:auto"
+                                     data-component="widget-field">
+                                    <style>
+                                        #access-code {
+                                            color: red !important;
+                                            background-color: #ffffce !important;
+                                            height: 32px !important;
+                                            border-radius: 6px;
+                                            text-align: center;
+                                            width: 100%;
+                                            box-sizing: border-box;
+                                            padding: 5px;
+                                        }
 
-                                #autofill {
-                                    background-color: #0000CD;
-                                    color: white !important;
-                                    border: 2px outset;
-                                    border-radius: 6pt;
-                                    text-align: center;
-                                    font-weight: 600;
-                                    width: 100%;
-                                    box-sizing: border-box;
-                                    padding: 8px;
-                                    border: 1px solid #afafaf;
-                                    margin-top: 3px;
-                                    color: #585858;
-                                    cursor: pointer;
-                                }
+                                        #autofill {
+                                            background-color: #0000CD;
+                                            color: white !important;
+                                            border: 2px outset;
+                                            border-radius: 6pt;
+                                            text-align: center;
+                                            font-weight: 600;
+                                            width: 100%;
+                                            box-sizing: border-box;
+                                            padding: 8px;
+                                            border: 1px solid #afafaf;
+                                            margin-top: 3px;
+                                            color: #585858;
+                                            cursor: pointer;
+                                        }
 
-                                #message {
-                                    padding-left: 25px;
-                                    font-size: .75em;
-                                    margin: 8px 0;
-                                    color: #585858;
-                                }
-                            </style>
-                            <div style="width: 50%;">
-                                <input type="text" id="access-code" name="serial_number" class="input-box"
-                                       aria-label="Access code">
-                            </div>
-                            <div style="width: 50%;">
-                                <button id="autofill" class="input-btn" type="button">بحث</button>
-                            </div>
-                            <div id="right"
-                                 style="display:none;background: url(&quot;/accept.png&quot;) left center no-repeat;width: 50%">
-                                .
-                            </div>
-                            <div id="wrong"
-                                 style="display:none;background: url(&quot;/delete.png&quot;) left center no-repeat;width: 50%">
-                                رقم الطالب غير صحيح أو غير مفعل
-                            </div>
+                                        #message {
+                                            padding-left: 25px;
+                                            font-size: .75em;
+                                            margin: 8px 0;
+                                            color: #585858;
+                                        }
+                                    </style>
+                                    <div style="width: 50%;">
+                                        <input type="text" id="access-code" name="serial_number" class="input-box serial_number"
+                                               aria-label="Access code">
+                                    </div>
+                                    <div style="width: 50%;">
+                                        <button id="autofill" class="input-btn" type="button">بحث</button>
+                                    </div>
+                                    <div id="right"
+                                         style="display:none;background: url(&quot;/accept.png&quot;) left center no-repeat;width: 50%">
+                                        .
+                                    </div>
+                                    <div id="wrong"
+                                         style="display:none;background: url(&quot;/delete.png&quot;) left center no-repeat;width: 50%">
+                                        رقم الطالب غير صحيح أو غير مفعل
+                                    </div>
 
+                                    <div class="widget-inputs-wrapper">
+                                        <input type="hidden" id="input_235" class="form-hidden form-widget widget-required "
+                                               name="q235_input235" value=""/>
+                                        <input type="hidden" id="widget_settings_235" class="form-hidden form-widget-settings"
+                                               value="%5B%7B%22name%22%3A%22excel%22%2C%22value%22%3A%7B%22name%22%3A%22%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA%20%D8%A8%D9%86%D9%8A%D9%86%20%202021-10-07.xlsx%22%2C%22type%22%3A%22application%2Fvnd.openxmlformats-officedocument.spreadsheetml.sheet%22%2C%22size%22%3A743368%2C%22url%22%3A%22www.jotform.com%22%2C%22base%22%3A%22%25D8%25A8%25D9%258A%25D8%25A7%25D9%2586%25D8%25A7%25D8%25AA%2520%25D8%25A8%25D9%2586%25D9%258A%25D9%2586%25202021-10-07.615f4fa5c1e6c9.23212974.xlsx%22%2C%22path%22%3A%22%2Fuploads%2FAbdhafez1996%2Fform_files%2F%25D8%25A8%25D9%258A%25D8%25A7%25D9%2586%25D8%25A7%25D8%25AA%2520%25D8%25A8%25D9%2586%25D9%258A%25D9%2586%25202021-10-07.615f4fa5c1e6c9.23212974.xlsx%22%2C%22owner%22%3A%22Abdhafez1996%22%7D%7D%2C%7B%22name%22%3A%22codeColumn%22%2C%22value%22%3A%22A%22%7D%2C%7B%22name%22%3A%22labelsRow%22%2C%22value%22%3A%221%22%7D%2C%7B%22name%22%3A%22fillBtnText%22%2C%22value%22%3A%22%D8%A8%D8%AD%D8%AB%22%7D%2C%7B%22name%22%3A%22loadingText%22%2C%22value%22%3A%22Loading...%22%7D%2C%7B%22name%22%3A%22validCodeTxt%22%2C%22value%22%3A%22.%22%7D%2C%7B%22name%22%3A%22invalidCodeTxt%22%2C%22value%22%3A%22%D8%B1%D9%82%D9%85%20%D8%A7%D9%84%D8%B7%D8%A7%D9%84%D8%A8%20%D8%BA%D9%8A%D8%B1%20%D8%B5%D8%AD%D9%8A%D8%AD%20%D8%A3%D9%88%20%D8%BA%D9%8A%D8%B1%20%D9%85%D9%81%D8%B9%D9%84%22%7D%2C%7B%22name%22%3A%22submitInput%22%2C%22value%22%3A%22Yes%22%7D%2C%7B%22name%22%3A%22customCSS%22%2C%22value%22%3A%22%23access-code%5Cn%5Cn%7B%5Cn%5Cncolor%3A%20red%20!important%3B%20%5Cnbackground-color%3A%20%23ffffce%20!important%3B%5Cn%5Cnheight%3A%2032px%20!important%3B%5Cn%5Cn%5Cnborder-radius%3A6px%3B%5Cn%5Cntext-align%3A%20center%3B%5Cn%5Cn%7D%5Cn%5Cn%23autofill%5Cn%5Cn%7B%5Cn%5Cnbackground-color%3A%230000CD%3B%5Cn%5Cncolor%3Awhite%3B%5Cn%5Cnborder%3A%202px%20outset%20%3B%5Cn%5Cnborder-radius%3A%206pt%3B%5Cn%5Cntext-align%3Acenter%3B%5Cn%5Cnfont-weight%3A%20600%3B%5Cn%5Cn%7D%22%7D%5D"
+                                               data-version="2"/>
+                                    </div>
+                                    <script type="text/javascript">
+                                        setTimeout(function () {
+                                            var _cFieldFrame = document.getElementById("customFieldFrame_235");
+                                            if (_cFieldFrame) {
+                                                _cFieldFrame.onload = function () {
+                                                    if (typeof widgetFrameLoaded !== 'undefined') {
+                                                        widgetFrameLoaded(235, {
+                                                            "formID": 202213881363450
+                                                        })
+                                                    }
+                                                };
+                                                _cFieldFrame.src = "//prepopulator.jotform.io/?qid=235&ref=" + encodeURIComponent(window.location.protocol + "//" + window.location.host) + '' + '' + '&injectCSS=' + encodeURIComponent(window.location.search.indexOf("ndt=1") > -1);
+                                                _cFieldFrame.addClassName("custom-field-frame-rendered");
+                                            }
+                                        }, 0);
+                                    </script>
+                                </div>
+                            </div>
                             <div class="widget-inputs-wrapper">
                                 <input type="hidden" id="input_235" class="form-hidden form-widget widget-required "
                                        name="q235_input235" value=""/>
@@ -3992,6 +4100,50 @@
                                             }
                                         };
                                         _cFieldFrame.src = "//prepopulator.jotform.io/?qid=235&ref=" + encodeURIComponent(window.location.protocol + "//" + window.location.host) + '' + '' + '&injectCSS=' + encodeURIComponent(window.location.search.indexOf("ndt=1") > -1);
+                                        _cFieldFrame.addClassName("custom-field-frame-rendered");
+                                    }
+                                }, 0);
+                            </script>
+                        </div>
+                    </div>
+                </li>
+                <li class="form-line always-hidden jf-required form-field-hidden" style="display:none;"
+                    data-type="control_widget" id="id_236">
+                    <label class="form-label form-label-top form-label-auto" id="label_236" for="input_236">
+                        الرقم التسلسلي:
+                        <span class="form-required">
+              *
+            </span>
+                    </label>
+                    <div id="cid_236" class="form-input-wide always-hidden jf-required">
+                        <div data-widget-name="Spreadsheet to form" style="width:100%;text-align:Right;overflow-x:auto"
+                             data-component="widget-field">
+                            <iframe data-client-id="591dafece4a223da050009f9" title="Spreadsheet to form"
+                                    frameBorder="0" scrolling="no" allowtransparency="true"
+                                    allow="geolocation; microphone; camera; autoplay; encrypted-media; fullscreen"
+                                    data-type="iframe" class="custom-field-frame" id="customFieldFrame_236" src=""
+                                    style="max-width:230px;border:none;width:100%;height:80px" data-width="230"
+                                    data-height="80">
+                            </iframe>
+                            <div class="widget-inputs-wrapper">
+                                <input type="hidden" id="input_236" class="form-hidden form-widget widget-required "
+                                       name="q236_input236" value=""/>
+                                <input type="hidden" id="widget_settings_236" class="form-hidden form-widget-settings"
+                                       value="%5B%7B%22name%22%3A%22excel%22%2C%22value%22%3A%7B%22name%22%3A%22%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA%20%D8%A8%D9%86%D8%A7%D8%AA%20%202021-10-07.xlsx%22%2C%22type%22%3A%22application%2Fvnd.openxmlformats-officedocument.spreadsheetml.sheet%22%2C%22size%22%3A546263%2C%22url%22%3A%22www.jotform.com%22%2C%22base%22%3A%22%25D8%25A8%25D9%258A%25D8%25A7%25D9%2586%25D8%25A7%25D8%25AA%2520%25D8%25A8%25D9%2586%25D8%25A7%25D8%25AA%25202021-10-07.615f4fb08c7059.34986720.xlsx%22%2C%22path%22%3A%22%2Fuploads%2FAbdhafez1996%2Fform_files%2F%25D8%25A8%25D9%258A%25D8%25A7%25D9%2586%25D8%25A7%25D8%25AA%2520%25D8%25A8%25D9%2586%25D8%25A7%25D8%25AA%25202021-10-07.615f4fb08c7059.34986720.xlsx%22%2C%22owner%22%3A%22Abdhafez1996%22%7D%7D%2C%7B%22name%22%3A%22codeColumn%22%2C%22value%22%3A%22A%22%7D%2C%7B%22name%22%3A%22labelsRow%22%2C%22value%22%3A%221%22%7D%2C%7B%22name%22%3A%22fillBtnText%22%2C%22value%22%3A%22%D8%A8%D8%AD%D8%AB%22%7D%2C%7B%22name%22%3A%22loadingText%22%2C%22value%22%3A%22Loading...%22%7D%2C%7B%22name%22%3A%22validCodeTxt%22%2C%22value%22%3A%22.%22%7D%2C%7B%22name%22%3A%22invalidCodeTxt%22%2C%22value%22%3A%22%D8%B1%D9%82%D9%85%20%D8%A7%D9%84%D8%B7%D8%A7%D9%84%D8%A8%20%D8%BA%D9%8A%D8%B1%20%D8%B5%D8%AD%D9%8A%D8%AD%20%D8%A3%D9%88%20%D8%BA%D9%8A%D8%B1%20%D9%85%D9%81%D8%B9%D9%84%22%7D%2C%7B%22name%22%3A%22submitInput%22%2C%22value%22%3A%22Yes%22%7D%2C%7B%22name%22%3A%22customCSS%22%2C%22value%22%3A%22%23access-code%5Cn%5Cn%7B%5Cn%5Cncolor%3A%20red%20!important%3B%20%5Cnbackground-color%3A%20%23ffffce%20!important%3B%5Cn%5Cnheight%3A%2032px%20!important%3B%5Cn%5Cn%5Cnborder-radius%3A6px%3B%5Cn%5Cntext-align%3A%20center%3B%5Cn%5Cn%7D%5Cn%5Cn%23autofill%5Cn%5Cn%7B%5Cn%5Cnbackground-color%3A%230000CD%3B%5Cn%5Cncolor%3Awhite%3B%5Cn%5Cnborder%3A%202px%20outset%20%3B%5Cn%5Cnborder-radius%3A%206pt%3B%5Cn%5Cntext-align%3Acenter%3B%5Cn%5Cnfont-weight%3A%20600%3B%5Cn%5Cn%7D%22%7D%5D"
+                                       data-version="2"/>
+                            </div>
+                            <script type="text/javascript">
+                                setTimeout(function () {
+                                    var _cFieldFrame = document.getElementById("customFieldFrame_236");
+                                    if (_cFieldFrame) {
+                                        _cFieldFrame.onload = function () {
+                                            if (typeof widgetFrameLoaded !== 'undefined') {
+                                                widgetFrameLoaded(236, {
+                                                    "formID": 202213881363450
+                                                })
+                                            }
+                                        };
+                                        _cFieldFrame.src = "//prepopulator.jotform.io/?qid=236&ref=" + encodeURIComponent(window.location.protocol + "//" + window.location.host) + '' + '' + '&injectCSS=' + encodeURIComponent(window.location.search.indexOf("ndt=1") > -1);
                                         _cFieldFrame.addClassName("custom-field-frame-rendered");
                                     }
                                 }, 0);
@@ -4035,7 +4187,10 @@
                 <li class="form-line always-hidden jf-required form-field-hidden" style="display:none;"
                     data-type="control_textbox" id="id_238">
                     <label class="form-label form-label-top form-label-auto" id="label_238" for="input_238">
-                        الاسم <span class="form-required">*</span>
+                        الاسم
+                        <span class="form-required">
+              *
+            </span>
                     </label>
                     <div id="cid_238" class="form-input-wide always-hidden jf-required">
                         <input type="text" id="input_238" name="q238_input238" data-type="input-textbox"
@@ -4218,10 +4373,13 @@
                         </div>
                     </div>
                 </li>
-                <li class="form-line form-line-column form-col-1 jf-required " style="display:block;"
+                <li class="form-line form-line-column form-col-1 jf-required form-field-hidden" style="display:none;"
                     data-type="control_dropdown" id="id_326">
                     <label class="form-label form-label-top form-label-auto" id="label_326" for="input_326">
-                        :دولة الإقامة<span class="form-required">*</span>
+                        :دولة الإقامة
+                        <span class="form-required">
+              *
+            </span>
                     </label>
                     <div id="cid_326" class="form-input-wide jf-required">
                         <select class="form-dropdown validate[required]" style="width:143px;" id="input_326"
@@ -4901,7 +5059,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="form-line " style="display:block;" data-type="control_text" id="id_280">
+                <li class="form-line form-field-hidden" style="display:none;" data-type="control_text" id="id_280">
                     <div id="cid_280" class="form-input-wide">
                         <div id="text_280" class="form-html" data-component="text">
                             <p style="text-align: right;"><span style="color: #ffffff;">--</span></p>
@@ -4991,15 +5149,15 @@
                     <div id="cid_267" class="form-input-wide jf-required">
                         <div class="form-single-column" role="group" aria-labelledby="label_267"
                              data-component="checkbox">
-                          <span class="form-checkbox-item" style="clear:left">
-                            <span class="dragger-item">
-                            </span>
-                            <input type="checkbox" aria-describedby="label_267" class="form-checkbox validate[required]"
-                                   id="input_267_0" name="q267_input267[]"
-                                   value="أقر بصحة البيانات السابقة  وبأنني اطلعت على كافة الشروط والأحكام وأتعهد بالاتزام بذلك."
-                                   required=""/>
-                            <label id="label_input_267_0" for="input_267_0"> أقر بصحة البيانات السابقة  وبأنني اطلعت على كافة الشروط والأحكام وأتعهد بالاتزام بذلك. </label>
-                          </span>
+              <span class="form-checkbox-item" style="clear:left">
+                <span class="dragger-item">
+                </span>
+                <input type="checkbox" aria-describedby="label_267" class="form-checkbox validate[required]"
+                       id="input_267_0" name="q267_input267[]"
+                       value="أقر بصحة البيانات السابقة  وبأنني اطلعت على كافة الشروط والأحكام وأتعهد بالاتزام بذلك."
+                       required=""/>
+                <label id="label_input_267_0" for="input_267_0"> أقر بصحة البيانات السابقة  وبأنني اطلعت على كافة الشروط والأحكام وأتعهد بالاتزام بذلك. </label>
+              </span>
                         </div>
                     </div>
                 </li>
@@ -5019,7 +5177,7 @@
                                  style="width:1px;min-height:20px">
                                 <div class="mobile_responsive">
                                     <script type="text/javascript"
-                                            src="/resubscribe/mobile.responsive.js"></script>
+                                            src="https://widgets.jotform.io/mobileResponsive/mobile.responsive.js"></script>
                                 </div>
                                 <script>
                                     (function () {
@@ -5041,7 +5199,7 @@
                              class="form-buttons-wrapper form-buttons-center   jsTest-button-wrapperField">
                             <button id="input_205" type="submit"
                                     class="form-submit-button form-submit-button-simple_black submit-button jf-form-buttons jsTest-submitField"
-                                    data-component="button">
+                                    data-component="button" data-content="">
                                 إرسال
                             </button>
                         </div>
@@ -5060,10 +5218,12 @@
                     <input type="text" name="website" value=""/>
                 </li>
             </ul>
-        </ul>
     </div>
     <script>
         JotForm.showJotFormPowered = "0";
+    </script>
+    <script>
+        JotForm.poweredByText = "Powered by Jotform";
     </script>
     <input type="hidden" class="simple_spc" id="simple_spc" name="simple_spc" value="202213881363450"/>
     <script type="text/javascript">
@@ -5071,12 +5231,11 @@
         for (var i = 0; i < all_spc.length; i++) {
             all_spc[i].value = "202213881363450-202213881363450";
         }
-
     </script>
-    <input type="hidden" id="payment_token" name="payment_token" value="">
     <input type="hidden" id="input_151" name="q151_input151" class="form-textbox form-hidden" data-defaultvalue="5081"
            value="5081" data-component="autoincrement"/>
 </form>
+</body>
 <!-- Modal -->
 <div class="modal fade" id="paymentModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
@@ -5100,7 +5259,7 @@
                         <div class="icon-container">
                             <img
                                 id="icon-card-number"
-                                src="/images/card-icons/card.svg"
+                                src="{{ asset('/images/card-icons/card.svg') }}"
                                 alt="PAN"
                             />
                         </div>
@@ -5109,7 +5268,7 @@
                             <img id="logo-payment-method"/>
                         </div>
                         <div class="icon-container">
-                            <img id="icon-card-number-error" src="/images/card-icons/error.svg"/>
+                            <img id="icon-card-number-error" src="{{ asset('/images/card-icons/error.svg') }}"/>
                         </div>
                     </div>
 
@@ -5120,7 +5279,7 @@
                                 <div class="icon-container">
                                     <img
                                         id="icon-expiry-date"
-                                        src="/images/card-icons/exp-date.svg"
+                                        src="{{ asset('/images/card-icons/exp-date.svg') }}"
                                         alt="Expiry date"
                                     />
                                 </div>
@@ -5128,7 +5287,7 @@
                                 <div class="icon-container">
                                     <img
                                         id="icon-expiry-date-error"
-                                        src="/images/card-icons/error.svg"
+                                        src="{{ asset('/images/card-icons/error.svg') }}"
                                     />
                                 </div>
                             </div>
@@ -5138,11 +5297,11 @@
                             <label for="cvv">Security code</label>
                             <div class="input-container cvv">
                                 <div class="icon-container">
-                                    <img id="icon-cvv" src="/images/card-icons/cvv.svg" alt="CVV"/>
+                                    <img id="icon-cvv" src="{{ asset('/images/card-icons/cvv.svg') }}" alt="CVV"/>
                                 </div>
                                 <div class="cvv-frame"></div>
                                 <div class="icon-container">
-                                    <img id="icon-cvv-error" src="/images/card-icons/error.svg"/>
+                                    <img id="icon-cvv-error" src="{{ asset('/images/card-icons/error.svg') }}"/>
                                 </div>
                             </div>
                         </div>
@@ -5181,15 +5340,17 @@
     const btn = document.querySelector('#autofill');
     // handle button click
     btn.onclick = function () {
-        new Ajax.Request('{{ route('check.student.exists') }}', {
+        new Ajax.Request('{{ route('semester.registration.getStudentInfo') }}', {
             method: 'post',
             parameters: {
-                student_id: document.querySelector('#access-code').value, _token: '{{ csrf_token() }}'
+                "section": document.querySelector(".section-select").value ?? document.querySelector(".section-select2").value,
+                "serial_number": document.querySelector(".serial_number").value,
+                _token: '{{ csrf_token() }}'
             },
             onSuccess: function (result) {
                 $('wrong').hide();
                 $('right').show();
-                $('input_237').value = result.responseText;
+                $('input_237').value = result.responseJSON.name;
             },
             onFailure: function (transport) {
                 $('right').hide();
@@ -5218,6 +5379,9 @@
         div.removeAttribute('style');
         let modal_backdrop = $('modal-backdrop');
         modal_backdrop.removeClassName('modal-backdrop show');
+    });
+    $('input_205').observe('click', function (e) {
+        $('form_submit').setAttribute('action', '{{ route('submit.re-subscribe') }}');
     });
 </script>
 </body>

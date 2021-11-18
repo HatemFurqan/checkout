@@ -33,16 +33,16 @@ class Checkout
     {
         $client = new Client(['base_uri' => $this->sandbox]);
 
-        $response = $client->request('POST', '/payment-links', ['json' => [
-            "amount" => 200,
-        ],
-            'headers' =>
-                [
-                    'Authorization' => "sk_test_1e422a84-39e0-4f2d-a94a-11add28b638c"
-                ]
-        ]);
+        $response = $client->request('POST', '/payment-links',
+            [
+                'json' => [
+                    "amount" => 350,
+                ], 'headers' => [
+                'Authorization' => "sk_test_1e422a84-39e0-4f2d-a94a-11add28b638c"
+            ]
+            ]);
         $data = \GuzzleHttp\json_decode($response->getBody()->getContents());
-        return $data;
+        return $data->status;
     }
 
     public function payment(string $token = null)
@@ -63,7 +63,7 @@ class Checkout
             '0044', '02073233888'
         ]);
         $payment->billing_descriptor = new BillingDescriptor('Dynamic desc charge', 'City charge');
-        $payment->amount = 200;
+        $payment->amount = 350;
         $payment->capture = false;
         $payment->reference = 'ORD-0908571';
         $payment->threeDs = new ThreeDs(false);

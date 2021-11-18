@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=1"/>
     <meta name="HandheldFriendly" content="true"/>
     <title>Furqan Center | Resubscribe</title>
-    <link href="/resubscribe/formCss.css?3.3.29058" rel="stylesheet" type="text/css"/>
-    <link type="text/css" rel="stylesheet" href="/resubscribe/nova.css?3.3.29058"/>
+    <link href="{{ asset('/resubscribe/formCss.css') }}" rel="stylesheet" type="text/css"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset('/resubscribe/nova.css') }}"/>
     <style type="text/css">@media print {
             .form-section {
                 display: inline !important
@@ -28,9 +28,9 @@
             }
         }</style>
     <link type="text/css" rel="stylesheet"
-          href="/resubscribe/566a91c2977cdfcd478b4567.css?themeRevisionID=5d713a7304e9ed3c13620001"/>
+          href="{{ asset('/resubscribe/566a91c2977cdfcd478b4567.css') }}"/>
     <link type="text/css" rel="stylesheet"
-          href="/resubscribe/payment_feature.css?3.3.29058"/>
+          href="{{ asset('/resubscribe/payment_feature.css') }}"/>
     <style type="text/css">
         .form-label-left {
             width: 150px;
@@ -1790,18 +1790,18 @@
         /* Injected CSS Code */
     </style>
     <link type="text/css" rel="stylesheet"
-          href="/resubscribe/form-submit-button-simple_blue.css?3.3.29058"/>
+          href="{{ asset('/resubscribe/form-submit-button-simple_blue.css') }}"/>
     <link type="text/css" rel="stylesheet"
-          href="/resubscribe/form-submit-button-simple_black.css?3.3.29058"/>
-    <script src="/resubscribe/prototype.forms.js" type="text/javascript"></script>
-    <script src="/resubscribe/jotform.forms.js?3.3.29058" type="text/javascript"></script>
-    <script src="/resubscribe/imageinfo.js?v=3.3.29058" type="text/javascript"></script>
-    <script src="/resubscribe/fileuploader.js?v=3.3.29058"></script>
-    <script defer src="/resubscribe/punycode.js"></script>
-    <script src="/resubscribe/promise-polyfill.js"></script>
-    <script src="/resubscribe/postMessage.js?3.3.29058" type="text/javascript"></script>
-    <script src="/resubscribe/WidgetsServer.js?v=1637003052205" type="text/javascript"></script>
-    <script src="/resubscribe/math-processor.js?v=3.3.29058" type="text/javascript"></script>
+          href="{{ asset('/resubscribe/form-submit-button-simple_black.css') }}"/>
+    <script src="{{ asset('/resubscribe/prototype.forms.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/resubscribe/jotform.forms.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/resubscribe/imageinfo.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/resubscribe/fileuploader.js') }}"></script>
+    <script defer src="{{ asset('/resubscribe/punycode.js') }}"></script>
+    <script src="{{ asset('/resubscribe/promise-polyfill.js') }}"></script>
+    <script src="{{ asset('/resubscribe/postMessage.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/resubscribe/WidgetsServer.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/resubscribe/math-processor.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
         JotForm.newDefaultTheme = false;
         JotForm.extendsNewTheme = false;
@@ -3046,10 +3046,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
-<body>
-<form class="jotform-form" id="form_submit" action="https://submit.jotformeu.com/submit/202213881363450/" method="post"
+
+<form class="jotform-form" id="form_submit" action="#" method="post"
       enctype="multipart/form-data" name="form_202213881363450" id="202213881363450" accept-charset="utf-8"
       autocomplete="on">
+    @csrf
+
     <input type="hidden" name="formID" value="202213881363450"/>
     <input type="hidden" id="JWTContainer" value=""/>
     <input type="hidden" id="cardinalOrderNumber" value=""/>
@@ -3492,7 +3494,7 @@
             </span>
                     </label>
                     <div id="cid_332" class="form-input-wide always-hidden jf-required">
-                        <select class="form-dropdown validate[required]" style="width:370px;" id="input_332"
+                        <select class="form-dropdown validate[required] section-select2" style="width:370px;" id="input_332"
                                 name="q332_input332">
                             <option value=""> ===اختر===</option>
                             <option value="بنين"> بنين</option>
@@ -3983,7 +3985,7 @@
             </span>
                     </label>
                     <div id="cid_195" class="form-input-wide jf-required">
-                        <select class="form-dropdown validate[required]" style="width:370px;" id="input_195"
+                        <select class="form-dropdown validate[required] section-select" style="width:370px;" id="input_195"
                                 name="q195_input195">
                             <option value=""> ===اختر===</option>
                             <option value="بنين"> بنين</option>
@@ -4041,7 +4043,7 @@
                                         }
                                     </style>
                                     <div style="width: 50%;">
-                                        <input type="text" id="access-code" name="serial_number" class="input-box"
+                                        <input type="text" id="access-code" name="serial_number" class="input-box serial_number"
                                                aria-label="Access code">
                                     </div>
                                     <div style="width: 50%;">
@@ -5193,6 +5195,85 @@
                         </div>
                     </div>
                 </li>
+
+
+                <li
+                    id="payment-form"
+                    style="display: none"
+                >
+                    <form
+                        dir="ltr"
+                        method="POST"
+                        action="https://merchant.com/charge-card"
+                    >
+                        <label for="card-number">Card number</label>
+                        <div class="input-container card-number">
+                            <div class="icon-container">
+                                <img
+                                    id="icon-card-number"
+                                    src="{{ asset('images/card-icons/card.svg') }}"
+                                    alt="PAN"
+                                />
+                            </div>
+                            <div class="card-number-frame"></div>
+                            <div class="icon-container payment-method">
+                                <img id="logo-payment-method" />
+                            </div>
+                            <div class="icon-container">
+                                <img id="icon-card-number-error" src="{{ asset('images/card-icons/error.svg') }}" />
+                            </div>
+                        </div>
+
+                        <div class="date-and-code">
+                            <div>
+                                <label for="expiry-date">Expiry date</label>
+                                <div class="input-container expiry-date">
+                                    <div class="icon-container">
+                                        <img
+                                            id="icon-expiry-date"
+                                            src="{{ asset('images/card-icons/exp-date.svg') }}"
+                                            alt="Expiry date"
+                                        />
+                                    </div>
+                                    <div class="expiry-date-frame"></div>
+                                    <div class="icon-container">
+                                        <img
+                                            id="icon-expiry-date-error"
+                                            src="{{ asset('images/card-icons/error.svg') }}"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="cvv">Security code</label>
+                                <div class="input-container cvv">
+                                    <div class="icon-container">
+                                        <img id="icon-cvv" src="{{ asset('images/card-icons/cvv.svg') }}" alt="CVV" />
+                                    </div>
+                                    <div class="cvv-frame"></div>
+                                    <div class="icon-container">
+                                        <img id="icon-cvv-error" src="{{ asset('images/card-icons/error.svg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button id="pay-button" type="button" disabled="">
+                            PAY GBP 50.00
+                        </button>
+
+                        <div>
+                            <span class="error-message error-message__card-number"></span>
+                            <span class="error-message error-message__expiry-date"></span>
+                            <span class="error-message error-message__cvv"></span>
+                        </div>
+
+                        <p class="success-payment-message"></p>
+                    </form>
+                </li>
+
+
                 <li class="form-line" data-type="control_button" id="id_205">
                     <div id="cid_205" class="form-input-wide">
                         <div style="text-align:center" data-align="center"
@@ -5235,122 +5316,44 @@
     <input type="hidden" id="input_151" name="q151_input151" class="form-textbox form-hidden" data-defaultvalue="5081"
            value="5081" data-component="autoincrement"/>
 </form>
-</body>
-<!-- Modal -->
-<div class="modal fade" id="paymentModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">قم بإضافة بيانات البطاقة الائتمانية</h5>
-                <button type="button" class="close" id="closePaymentModel" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form
-                    dir="ltr"
-                    id="payment-form"
-                    method="POST"
-                    action="https://merchant.com/charge-card"
-                >
-                    <label for="card-number">Card number</label>
-                    <div class="input-container card-number">
-                        <div class="icon-container">
-                            <img
-                                id="icon-card-number"
-                                src="/images/card-icons/card.svg"
-                                alt="PAN"
-                            />
-                        </div>
-                        <div class="card-number-frame"></div>
-                        <div class="icon-container payment-method">
-                            <img id="logo-payment-method"/>
-                        </div>
-                        <div class="icon-container">
-                            <img id="icon-card-number-error" src="/images/card-icons/error.svg"/>
-                        </div>
-                    </div>
+</html>
 
-                    <div class="date-and-code">
-                        <div>
-                            <label for="expiry-date">Expiry date</label>
-                            <div class="input-container expiry-date">
-                                <div class="icon-container">
-                                    <img
-                                        id="icon-expiry-date"
-                                        src="/images/card-icons/exp-date.svg"
-                                        alt="Expiry date"
-                                    />
-                                </div>
-                                <div class="expiry-date-frame"></div>
-                                <div class="icon-container">
-                                    <img
-                                        id="icon-expiry-date-error"
-                                        src="/images/card-icons/error.svg"
-                                    />
-                                </div>
-                            </div>
-                        </div>
+<link rel="stylesheet" href="{{ asset('normalize.css') }}" />
+<link rel="stylesheet" href="{{ asset('style.css') }}" />
+<script src="https://cdn.checkout.com/js/framesv2.min.js"></script>
+<script src="{{ asset('app.js') }}"></script>
 
-                        <div>
-                            <label for="cvv">Security code</label>
-                            <div class="input-container cvv">
-                                <div class="icon-container">
-                                    <img id="icon-cvv" src="/images/card-icons/cvv.svg" alt="CVV"/>
-                                </div>
-                                <div class="cvv-frame"></div>
-                                <div class="icon-container">
-                                    <img id="icon-cvv-error" src="/images/card-icons/error.svg"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button id="pay-button" disabled="">
-                        PAY GBP 50.00
-                    </button>
-
-                    <div>
-                        <span class="error-message error-message__card-number"></span>
-                        <span class="error-message error-message__expiry-date"></span>
-                        <span class="error-message error-message__cvv"></span>
-                    </div>
-
-                    <p class="success-payment-message"></p>
-                </form>
-                <link rel="stylesheet" href="{{ asset('normalize.css') }}"/>
-                <link rel="stylesheet" href="{{ asset('style.css') }}"/>
-                <script src="{{ asset('/resubscribe/framesv2.min.js') }}"></script>
-                <script src="{{ asset('/resubscribe.js') }}"></script>
-            </div>
-            <div class="modal-footer">
-                <button type="button" id="closePaymentModel2" class="btn btn-secondary" data-dismiss="modal">Close
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="modal-backdrop" class=" fade "></div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
         crossorigin="anonymous"></script>
 
 <script>
+
+    const checkout_payment = document.querySelector('#input_288_0');
+
+    checkout_payment.onclick = function() {
+        // alert($(this).val());
+    }
+
+
     const btn = document.querySelector('#autofill');
     // handle button click
     btn.onclick = function () {
-        new Ajax.Request('{{ route('check.student.exists') }}', {
+        new Ajax.Request('{{ route('semester.registration.getStudentInfo') }}', {
             method: 'post',
             parameters: {
-                student_id: document.querySelector('#access-code').value, _token: '{{ csrf_token() }}'
+                "section": document.querySelector(".section-select").value ?? document.querySelector(".section-select2").value,
+                "serial_number": document.querySelector(".serial_number").value,
+                _token: '{{ csrf_token() }}'
             },
             onSuccess: function (result) {
                 $('wrong').hide();
                 $('right').show();
-                $('input_237').value = result.responseText;
+                $('input_237').value = result.responseJSON.name;
             },
             onFailure: function (transport) {
+                $('input_237').value = '';
+                $('input_237').change();
                 $('right').hide();
                 $('wrong').show();
             }
@@ -5358,30 +5361,26 @@
     };
 
     $('input_288_0').observe('click', function (e) {
-        let div = $('paymentModel');
+        let div = $('payment-form');
         div.addClassName('show');
         div.setAttribute('style', 'display:block');
-        let modal_backdrop = $('modal-backdrop');
-        modal_backdrop.addClassName('modal-backdrop show');
     });
-    $('closePaymentModel').observe('click', function (e) {
-        let div = $('paymentModel');
-        div.removeClassName('show');
-        div.removeAttribute('style');
-        let modal_backdrop = $('modal-backdrop');
-        modal_backdrop.removeClassName('modal-backdrop show');
+    $('input_288_2').observe('click', function (e) {
+        let div = $('payment-form');
+        div.addClassName('hidw');
+        div.setAttribute('style', 'display:none');
     });
-    $('closePaymentModel2').observe('click', function (e) {
-        let div = $('paymentModel');
-        div.removeClassName('show');
-        div.removeAttribute('style');
-        let modal_backdrop = $('modal-backdrop');
-        modal_backdrop.removeClassName('modal-backdrop show');
+    $('input_288_1').observe('click', function (e) {
+        let div = $('payment-form');
+        div.addClassName('hidw');
+        div.setAttribute('style', 'display:none');
     });
+
     $('input_205').observe('click', function (e) {
-        $('form_submit').setAttribute('action', '{{ route('submit.re-subscribe') }}');
+        $('form_submit').setAttribute('action', '{{ route('semester.registration.store') }}');
     });
 </script>
+<script type="text/javascript">JotForm.forwardToEu = true;</script>
+
 </body>
 </html>
-<script type="text/javascript">JotForm.forwardToEu = true;</script>
