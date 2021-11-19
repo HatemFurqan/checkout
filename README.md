@@ -5,3 +5,4 @@ allow adjsuting product rate (subscriptions fees (changes by semester)) or (bag 
 Form in both English & Arabic
 confirm checkout sandbox testing
 Ensure checkout live stage testing
+add "status" column to the database 
