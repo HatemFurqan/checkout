@@ -6,3 +6,4 @@ Form in both English & Arabic
 confirm checkout sandbox testing
 Ensure checkout live stage testing
 add "status" column to the database 
+add a simple successful page  ( Thank you for submiting your regisrtation form, your payment went successfully, you should receive further instrucitons shortly) 
