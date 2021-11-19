@@ -8,3 +8,7 @@ Ensure checkout live stage testing
 add "status" column to the database 
 add a simple successful page  ( Thank you for submiting your regisrtation form, your payment went successfully, you should receive further instrucitons shortly) 
 Fail page ( there was an error processing your payment please click here to try again)
+
+
+Estimation of 2 Days
+sandbox  payment keys 
