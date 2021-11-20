@@ -29,13 +29,19 @@ class SemesterRegistrationController extends Controller
         return $data->status;
     }
 
-    public function getStudentInfo(Request $request)
+    public function getStudentInfo()
     {
         $student = Student::query()
-            ->where('serial_number', '=', $request->serial_number)
-            ->where('section', '=', $request->section == 'بنين' ? '1' : '2')
+            ->where('serial_number', '=', \request()->std_number)
+            ->where('section', '=', \request()->std_section)
             ->first();
 
-        return response()->json(['name' => $student->name], 200, [], JSON_UNESCAPED_UNICODE);
+
+        if ($student){
+            return response()->json(['name' => $student->name], 200, [], JSON_UNESCAPED_UNICODE);
+        }
+
+        return response()->json(['name' => $student->name], 500);
+
     }
 }

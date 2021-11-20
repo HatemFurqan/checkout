@@ -248,7 +248,9 @@
 
                         <!-- General info and registration -->
                         <fieldset>
-                            <form action="" method="POST" id="main-form">
+                            <form action="{{ route('submit.re-subscribe') }}" method="POST" id="main-form">
+                                @csrf
+
                                 <div class="form-card">
 
                                 <p class="text-right bold" style="line-height: 2">
@@ -364,9 +366,9 @@
 
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="inputGroupSelect01">القسم</label>
+                                        <label class="input-group-text" for="std-section">القسم</label>
                                     </div>
-                                    <select class="custom-select" id="inputGroupSelect01">
+                                    <select class="custom-select" id="std-section">
                                         <option selected>اختر...</option>
                                         <option value="1">بنين</option>
                                         <option value="2">بنات</option>
@@ -374,18 +376,18 @@
                                 </div>
 
                                 <div class="form-group text-right">
-                                    <label for="exampleInputEmail1" class="text-right">الرقم التسلسلي:</label>
-                                    <input type="number" min="0" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="الرقم التسلسلي">
+                                    <label for="std-number" class="text-right">الرقم التسلسلي:</label>
+                                    <input type="number" min="0" class="form-control" id="std-number" aria-describedby="emailHelp" placeholder="الرقم التسلسلي">
                                 </div>
 
-                                <button type="button" class="btn btn-primary w-100">بحث</button>
+                                <button type="button" class="btn btn-primary w-100" id="std-number-search">بحث</button>
 
                                 <br>
                                 <br>
 
                                 <div class="form-group text-right">
-                                    <label for="exampleInputEmail1" class="text-right">الأسم:</label>
-                                    <input type="text" min="0" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="...">
+                                    <label for="std-name" class="text-right">الأسم:</label>
+                                    <input type="text" min="0" class="form-control" id="std-name" aria-describedby="emailHelp" placeholder="...">
                                 </div>
 
                                 <div id="std-private-info" class="">
@@ -469,6 +471,10 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <input type="hidden" name="token_pay" id="token_pay" required>
+                                    <button type="submit" class="btn btn-primary">ارسال</button>
+
                                 </div>
 
                             </div>
@@ -497,7 +503,6 @@
                                 </form>
 
                             </div>
-                            <button type="submit" class="btn btn-primary">ارسال</button>
                         </fieldset>
                     </div>
 
@@ -517,5 +522,27 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+
+    $(document).ready(function(){
+
+        $(document).on('click', 'form #std-number-search', function (e) {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '{{ route('semester.registration.getStudentInfo') }}?std_number=' + $('form #std-number').val() + '&std_section=' + $('form #std-section').val(),
+                success: function (data) {
+                    $('form #std-name').val(data.name);
+                },
+                error: function (data){
+                    $('form #std-name').val('الرقم التسلسي غير صحيح');
+                }
+            });
+        });
+
+
+    });
+</script>
 
 </html>

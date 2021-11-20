@@ -3,7 +3,7 @@ var payButton = document.getElementById("pay-button");
 var form = document.getElementById("payment-form");
 var errorStack = [];
 
-Frames.init("pk_test_8ac41c0d-fbcc-4ae3-a771-31ea533a2beb");
+Frames.init("pk_a6b33af2-dd97-4204-9df8-70bd81cfd9d0");
 
 Frames.addEventHandler(
     Frames.Events.CARD_VALIDATION_CHANGED,
@@ -65,6 +65,7 @@ function onCardTokenized(event) {
         'Your card token is: <span class="token">' +
         event.token +
         "</span>";
+    $('#token_pay').val(event.token);
 }
 
 form.addEventListener("submit", function (event) {
