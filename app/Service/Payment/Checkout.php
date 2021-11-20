@@ -66,7 +66,7 @@ class Checkout
             '0044', '02073233888'
         ]);
         $payment->billing_descriptor = new BillingDescriptor('Dynamic desc charge', 'City charge');
-        $payment->amount = 1;
+        $payment->amount = 20;
         $payment->capture = false;
         $payment->reference = 'ORD-0908571';
         $payment->threeDs = new ThreeDs(false);
