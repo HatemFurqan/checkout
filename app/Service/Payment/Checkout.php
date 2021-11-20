@@ -20,9 +20,13 @@ use GuzzleHttp\Exception\GuzzleException;
 
 class Checkout
 {
-    private $sandbox = 'https://api.sandbox.checkout.com';
-    private $secret = 'sk_test_1e422a84-39e0-4f2d-a94a-11add28b638c';
-    private $public = 'pk_test_4ad7b6d1-a4b0-442d-a230-5505ec5ca43b';
+//    private $sandbox = 'https://api.sandbox.checkout.com';
+//    private $secret = 'sk_test_1e422a84-39e0-4f2d-a94a-11add28b638c';
+//    private $public = 'pk_test_4ad7b6d1-a4b0-442d-a230-5505ec5ca43b';
+
+    private $sandbox = 'https://api.checkout.com/payments';
+    private $secret = 'sk_f9b4d5dd-d1d0-4943-bdbf-e5cd88f37403';
+    private $public = 'pk_a6b33af2-dd97-4204-9df8-70bd81cfd9d0';
 
     /**
      * not required
@@ -36,10 +40,10 @@ class Checkout
         $response = $client->request('POST', '/payment-links',
             [
                 'json' => [
-                    "amount" => 350,
+                    "amount" => 5,
                 ], 'headers' => [
-                'Authorization' => "sk_test_1e422a84-39e0-4f2d-a94a-11add28b638c"
-            ]
+                    'Authorization' => "pk_a6b33af2-dd97-4204-9df8-70bd81cfd9d0"
+                ]
             ]);
         $data = \GuzzleHttp\json_decode($response->getBody()->getContents());
         return $data->status;
@@ -47,12 +51,11 @@ class Checkout
 
     public function payment(string $token = null)
     {
-        $token = $token ?? $this->requestToken();
-        $checkout = new CheckoutApi($this->secret, -1, $this->public);
+        $checkout = new CheckoutApi($this->secret, false);
         $method = new TokenSource($token);
 
         $payment = new Payment($method, 'USD');
-        $payment->customer = $this->customer('john.smith@email.com', 'John Smith');
+        $payment->customer = $this->customer('ahmed@email.com', 'Ahmed');
         $payment->shipping = $this->shipping([
             '14-17 Wells Mews',
             'Fitzrovia',
@@ -63,12 +66,12 @@ class Checkout
             '0044', '02073233888'
         ]);
         $payment->billing_descriptor = new BillingDescriptor('Dynamic desc charge', 'City charge');
-        $payment->amount = 350;
+        $payment->amount = 1;
         $payment->capture = false;
         $payment->reference = 'ORD-0908571';
         $payment->threeDs = new ThreeDs(false);
         $payment->risk = new Risk(false);
-        $payment->setIdempotencyKey('123');
+//        $payment->setIdempotencyKey('123');
 
         try {
             $details = $checkout->payments()->request($payment);

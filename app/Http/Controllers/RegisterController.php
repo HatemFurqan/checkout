@@ -11,6 +11,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -53,16 +54,28 @@ class RegisterController extends Controller
      * @param string $token
      * @return string
      */
-    public function payment(string $token): string
+    public function payment(string $token)
     {
         $data = (new Checkout())->payment($token);
+
         dd($data);
         return $data;
     }
 
     public function resubscribe(Request $request)
     {
-        dd($request->all());
+
+        try {
+            DB::beginTransaction();
+            $value = $this->payment($request->token_pay);
+
+            dd($value);
+            DB::commit();
+        }catch (\Exception $e){
+            DB::rollBack();
+            throw $e;
+        }
+
     }
 
     /**
