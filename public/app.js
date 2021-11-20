@@ -1,177 +1,73 @@
 /* global Frames */
 var payButton = document.getElementById("pay-button");
 var form = document.getElementById("payment-form");
+var errorStack = [];
 
-Frames.init({
-    publicKey: 'pk_test_4ad7b6d1-a4b0-442d-a230-5505ec5ca43b',
-    localization: {
-        cardNumberPlaceholder: "Card number",
-        expiryMonthPlaceholder: "MM",
-        expiryYearPlaceholder: "YY",
-        cvvPlaceholder: "CVV",
-    }
-})
-var logos = generateLogos();
+Frames.init("pk_test_8ac41c0d-fbcc-4ae3-a771-31ea533a2beb");
 
-function generateLogos() {
-    var logos = {};
-    logos["card-number"] = {
-        src: "card",
-        alt: "card number logo",
-    };
-    logos["expiry-date"] = {
-        src: "exp-date",
-        alt: "expiry date logo",
-    };
-    logos["cvv"] = {
-        src: "cvv",
-        alt: "cvv logo",
-    };
-    return logos;
+Frames.addEventHandler(
+    Frames.Events.CARD_VALIDATION_CHANGED,
+    onCardValidationChanged
+);
+function onCardValidationChanged(event) {
+    console.log("CARD_VALIDATION_CHANGED: %o", event);
+    payButton.disabled = !Frames.isCardValid();
 }
-
-var errors = {};
-errors["card-number"] = "Please enter a valid card number";
-errors["expiry-date"] = "Please enter a valid expiry date";
-errors["cvv"] = "Please enter a valid cvv code";
 
 Frames.addEventHandler(
     Frames.Events.FRAME_VALIDATION_CHANGED,
     onValidationChanged
 );
-
 function onValidationChanged(event) {
-    var e = event.element;
+    console.log("FRAME_VALIDATION_CHANGED: %o", event);
 
-    if (event.isValid || event.isEmpty) {
-        if (e === "card-number" && !event.isEmpty) {
-            showPaymentMethodIcon();
-        }
-        setDefaultIcon(e);
-        clearErrorIcon(e);
-        clearErrorMessage(e);
+    var errorMessageElement = document.querySelector(".error-message");
+    var hasError = !event.isValid && !event.isEmpty;
+
+    if (hasError) {
+        errorStack.push(event.element);
     } else {
-        if (e === "card-number") {
-            clearPaymentMethodIcon();
-        }
-        setDefaultErrorIcon(e);
-        setErrorIcon(e);
-        setErrorMessage(e);
+        errorStack = errorStack.filter(function (element) {
+            return element !== event.element;
+        });
     }
+
+    var errorMessage = errorStack.length
+        ? getErrorMessage(errorStack[errorStack.length - 1])
+        : "";
+    errorMessageElement.textContent = errorMessage;
 }
 
-function clearErrorMessage(el) {
-    var selector = ".error-message__" + el;
-    var message = document.querySelector(selector);
-    message.textContent = "";
-}
+function getErrorMessage(element) {
+    var errors = {
+        "card-number": "Please enter a valid card number",
+        "expiry-date": "Please enter a valid expiry date",
+        cvv: "Please enter a valid cvv code",
+    };
 
-function clearErrorIcon(el) {
-    var logo = document.getElementById("icon-" + el + "-error");
-    logo.style.removeProperty("display");
-}
-
-function showPaymentMethodIcon(parent, pm) {
-    if (parent) parent.classList.add("show");
-
-    var logo = document.getElementById("logo-payment-method");
-    if (pm) {
-        var name = pm.toLowerCase();
-        logo.setAttribute("src", "/images/card-icons/" + name + ".svg");
-        logo.setAttribute("alt", pm || "payment method");
-    }
-    logo.style.removeProperty("display");
-}
-
-function clearPaymentMethodIcon(parent) {
-    if (parent) parent.classList.remove("show");
-
-    var logo = document.getElementById("logo-payment-method");
-    logo.style.setProperty("display", "none");
-}
-
-function setErrorMessage(el) {
-    var selector = ".error-message__" + el;
-    var message = document.querySelector(selector);
-    message.textContent = errors[el];
-}
-
-function setDefaultIcon(el) {
-    var selector = "icon-" + el;
-    var logo = document.getElementById(selector);
-    logo.setAttribute("src", "/images/card-icons/" + logos[el].src + ".svg");
-    logo.setAttribute("alt", logos[el].alt);
-}
-
-function setDefaultErrorIcon(el) {
-    var selector = "icon-" + el;
-    var logo = document.getElementById(selector);
-    logo.setAttribute("src", "/images/card-icons/" + logos[el].src + "-error.svg");
-    logo.setAttribute("alt", logos[el].alt);
-}
-
-function setErrorIcon(el) {
-    var logo = document.getElementById("icon-" + el + "-error");
-    logo.style.setProperty("display", "block");
-}
-
-Frames.addEventHandler(
-    Frames.Events.CARD_VALIDATION_CHANGED,
-    cardValidationChanged
-);
-
-function cardValidationChanged() {
-    payButton.disabled = !Frames.isCardValid();
+    return errors[element];
 }
 
 Frames.addEventHandler(
     Frames.Events.CARD_TOKENIZATION_FAILED,
     onCardTokenizationFailed
 );
-
 function onCardTokenizationFailed(error) {
     console.log("CARD_TOKENIZATION_FAILED: %o", error);
     Frames.enableSubmitForm();
 }
 
 Frames.addEventHandler(Frames.Events.CARD_TOKENIZED, onCardTokenized);
-
 function onCardTokenized(event) {
     var el = document.querySelector(".success-payment-message");
-    // el.innerHTML =
-    //   "Card tokenization completed<br>" +
-    //   'Your card token is: <span class="token">' +
-    //   event.token +
-    //   "</span>";
     el.innerHTML =
-        "payment completed<br>";
-    $.ajax({
-        url: "/payment/" + event.token, success: function (result) {
-            el.innerHTML = result;
-        }
-    });
+        "Card tokenization completed<br>" +
+        'Your card token is: <span class="token">' +
+        event.token +
+        "</span>";
 }
 
-Frames.addEventHandler(
-    Frames.Events.PAYMENT_METHOD_CHANGED,
-    paymentMethodChanged
-);
-
-function paymentMethodChanged(event) {
-    var pm = event.paymentMethod;
-    let container = document.querySelector(".icon-container.payment-method");
-
-    if (!pm) {
-        clearPaymentMethodIcon(container);
-    } else {
-        clearErrorIcon("card-number");
-        showPaymentMethodIcon(container, pm);
-    }
-}
-
-form.addEventListener("submit", onSubmit);
-
-function onSubmit(event) {
+form.addEventListener("submit", function (event) {
     event.preventDefault();
     Frames.submitCard();
-}
+});

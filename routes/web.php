@@ -17,12 +17,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('old_students');
 });
+
+Route::get('/payment/{token}', [RegisterController::class, 'Payment'])->name('payment');
+//
+
 Route::get('/re-subscribe', function () {
     return view('subscribe');
 });
-Route::get('/payment/{token}', [RegisterController::class, 'Payment'])->name('payment');
 Route::post('/submit', [RegisterController::class, 'register'])->name('submit');
 Route::post('/submit/re-subscribe', [RegisterController::class, 'resubscribe'])->name('submit.re-subscribe');
 Route::post('/check-student-exists', [RegisterController::class, 'checkStudentExists'])->name('check.student.exists');

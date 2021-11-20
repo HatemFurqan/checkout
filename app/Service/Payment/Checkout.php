@@ -38,8 +38,8 @@ class Checkout
                 'json' => [
                     "amount" => 350,
                 ], 'headers' => [
-                'Authorization' => "sk_test_1e422a84-39e0-4f2d-a94a-11add28b638c"
-            ]
+                    'Authorization' => "sk_test_1e422a84-39e0-4f2d-a94a-11add28b638c"
+                ]
             ]);
         $data = \GuzzleHttp\json_decode($response->getBody()->getContents());
         return $data->status;
