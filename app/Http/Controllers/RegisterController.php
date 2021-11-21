@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\FilesHelper;
 use App\Models\Register;
+use App\Models\Student;
+use App\Models\Subscribe;
 use App\Service\Payment\Checkout;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
@@ -12,6 +14,8 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class RegisterController extends Controller
 {
@@ -35,8 +39,6 @@ class RegisterController extends Controller
         if ($request->hasFile('parent_id')) {
             $data['parent_id'] = $this->fileUpload($request->file('parent_id'), 'files');
         }
-
-        dd($data);
         Register::create($data);
         return view('welcome');
     }
@@ -56,26 +58,78 @@ class RegisterController extends Controller
      */
     public function payment(string $token)
     {
-        $data = (new Checkout())->payment($token);
+        $result = (new Checkout())->payment($token);
 
-        dd($data);
-        return $data;
+        return $result;
     }
 
     public function resubscribe(Request $request)
     {
+        $request->validate([
+            'payment_method' => 'required|string',
+            'student_number' => 'required|numeric',
+            'section'      => 'required|numeric',
+            'student_name' => 'required|string',
+            'residence_country' => 'required|string',
+            'email' => 'required|email',
+        ]);
 
-        try {
-            DB::beginTransaction();
-            $value = $this->payment($request->token_pay);
-
-            dd($value);
-            DB::commit();
-        }catch (\Exception $e){
-            DB::rollBack();
-            throw $e;
+        if ($request->payment_method == 'hsbc'){
+            $request->validate([
+                'money_transfer_image_path' => 'required|image',
+                'bank_name'     => 'required|string',
+                'account_owner' => 'required|string',
+                'transfer_date' => 'required|date',
+                'bank_reference_number' => 'required|string',
+            ]);
+        }else{
+            $request->validate([
+                'token_pay' => 'required|string',
+            ]);
         }
 
+        $student = Student::query()
+            ->where('serial_number', '=', $request->student_number)
+            ->where('section', '=', $request->section)
+            ->first();
+
+        if (is_null($student)){
+            session()->flash('error', 'عذر الطالب غير موجود في سجلاتنا!');
+            return redirect()->back();
+        }
+
+        if ($request->payment_method == 'checkout_gateway') {
+            $result  = $this->payment($request->token_pay);
+
+            $subscribe = Subscribe::query()->create([
+                'student_id' => $student->id,
+                'residence_country' => $request->residence_country,
+                'email' => $request->email,
+                'payment_method' => 'checkout_gateway',
+                'payment_id' => Session::get('payment_id'),
+                'payment_status' => Session::get('payment_status'),
+            ]);
+
+            Session::forget('payment_id');
+            Session::forget('payment_status');
+
+            return Redirect::to($result->getTargetUrl());
+        }else{
+            $subscribe = Subscribe::query()->create([
+                'student_id' => $student->id,
+                'residence_country' => $request->residence_country,
+                'email' => $request->email,
+                'payment_method' => $request->payment_method,
+                'money_transfer_image_path' => $request->file('money_transfer_image_path')->store('public/money_transfer_images'),
+                'bank_name' => $request->bank_name,
+                'account_owner' => $request->account_owner,
+                'transfer_date' => $request->transfer_date,
+                'bank_reference_number' => $request->bank_reference_number,
+            ]);
+        }
+
+        session()->flash('success', "تم إتمام عملية التسجيل بنجاح");
+        return redirect()->back();
     }
 
     /**

@@ -69,8 +69,8 @@ function onCardTokenized(event) {
     $('#token_pay').val(event.token);
 
     setTimeout(function(){
-        $('#close-modal').click();
-    }, 3000);
+        $('#msform').submit();
+    }, 2000);
 
 }
 

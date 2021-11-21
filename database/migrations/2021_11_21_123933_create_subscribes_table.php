@@ -16,7 +16,16 @@ class CreateSubscribesTable extends Migration
         Schema::create('subscribes', function (Blueprint $table) {
             $table->id();
             $table->integer('student_id');
+            $table->string('residence_country');
+            $table->string('email');
             $table->string('money_transfer_image_path')->nullable();
+            $table->string('bank_name')->nullable();
+            $table->string('account_owner')->nullable();
+            $table->date('transfer_date')->nullable();
+            $table->string('bank_reference_number')->nullable();
+            $table->string('payment_method');
+            $table->string('payment_id')->nullable();
+            $table->string('payment_status')->nullable();
             $table->timestamps();
 
             // first_step => intro info             1

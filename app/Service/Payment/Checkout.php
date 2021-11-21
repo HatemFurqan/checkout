@@ -17,6 +17,7 @@ use Checkout\Models\Phone;
 use Checkout\Models\Tokens\Card;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Support\Facades\Session;
 
 class Checkout
 {
@@ -67,14 +68,17 @@ class Checkout
         ]);
         $payment->billing_descriptor = new BillingDescriptor('Dynamic desc charge', 'City charge');
         $payment->amount = 1;
-        $payment->capture = false;
+        $payment->capture = true;
         $payment->reference = 'ORD-0908571';
-        $payment->threeDs = new ThreeDs(false);
+        $payment->threeDs = new ThreeDs(true);
         $payment->risk = new Risk(false);
 //        $payment->setIdempotencyKey('123');
 
         try {
             $details = $checkout->payments()->request($payment);
+
+            Session::put('payment_id', $details->id);
+            Session::put('payment_status', $details->status);
 
             $redirection = $details->getRedirection();
             if ($redirection) {
