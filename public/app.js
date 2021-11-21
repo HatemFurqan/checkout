@@ -60,12 +60,18 @@ function onCardTokenizationFailed(error) {
 Frames.addEventHandler(Frames.Events.CARD_TOKENIZED, onCardTokenized);
 function onCardTokenized(event) {
     var el = document.querySelector(".success-payment-message");
-    el.innerHTML =
-        "Card tokenization completed<br>" +
-        'Your card token is: <span class="token">' +
-        event.token +
-        "</span>";
+    // el.innerHTML =
+    //     "Card tokenization completed<br>" +
+    //     'Your card token is: <span class="token">' +
+    //     event.token +
+    //     "</span>";
+    el.innerHTML = '<span class="success">' + "يمكنكم متابعة التسجيل بالنقر على زر الارسال بالاسفل" + "</span>";
     $('#token_pay').val(event.token);
+
+    setTimeout(function(){
+        $('#close-modal').click();
+    }, 3000);
+
 }
 
 form.addEventListener("submit", function (event) {
