@@ -36,6 +36,8 @@ return [
     'Operation reference number' => 'Operation reference number',
     'Checkout' => 'Checkout',
     'Search' => 'Search',
+    'The students excuse is not in our records' => 'The student excuse is not in our records',
+    'The registration process has been completed successfully' => 'The registration process has been completed successfully',
 
 
 ];

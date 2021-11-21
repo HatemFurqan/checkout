@@ -94,7 +94,8 @@ class RegisterController extends Controller
             ->first();
 
         if (is_null($student)){
-            session()->flash('error', 'عذر الطالب غير موجود في سجلاتنا!');
+
+            session()->flash('error', __('resubscribe.The students excuse is not in our records'));
             return redirect()->back();
         }
 
@@ -128,7 +129,7 @@ class RegisterController extends Controller
             ]);
         }
 
-        session()->flash('success', "تم إتمام عملية التسجيل بنجاح");
+        session()->flash('success', __('resubscribe.The registration process has been completed successfully'));
         return redirect()->back();
     }
 

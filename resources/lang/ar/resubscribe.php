@@ -35,5 +35,7 @@ return [
     'Transfer date' => 'تاريخ التحويل',
     'Operation reference number' => 'الرقم المرجعي للعملية',
     'Checkout' => 'إتمام الدفع',
+    'The students excuse is not in our records' => 'عذر الطالب غير موجود في سجلاتنا',
+    'The registration process has been completed successfully' => 'تم إتمام عملية التسجيل بنجاح',
 
 ];
