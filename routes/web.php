@@ -4,6 +4,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SemesterRegistrationController;
 use App\Http\Controllers\ImportController;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Intl\Countries;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('old_students');
+
+    $countries = Countries::getNames('ar');
+
+    return view('old_students', ['countries' => $countries]);
 });
 
 Route::post('/submit/re-subscribe', [RegisterController::class, 'resubscribe'])->name('submit.re-subscribe');
