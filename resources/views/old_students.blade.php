@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -235,10 +235,32 @@
 <body>
 
     <div class="container-fluid">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+                <ul class="navbar-nav mr-auto">
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <li class="nav-item active">
+                            <a class="nav-link"
+                               href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"> {{ $properties['native'] }}
+                                <span class="sr-only">(current)</span></a>
+                        </li>
+                    @endforeach
+                </ul>
+
+            </div>
+        </nav>
+
         <div class="row justify-content-center">
             <div class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
                 <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                    <h2 id="heading">الفصل الدراسي الثاني 2022</h2>
+                    <h2 id="heading">{{ __('resubscribe.Second semester 2022') }}</h2>
 
                     @if(session('success'))
                         <div class="alert alert-success" role="alert">
@@ -257,9 +279,9 @@
 
                         <!-- progressbar -->
                         <ul id="progressbar" class="d-flex flex-row">
-                            <li class="active" id="account"><strong>المعلومات والملاحظات</strong></li>
-                            <li id="personal"><strong>التسجيل</strong></li>
-                            <li id="confirm"><strong>الدفع والانهاء</strong></li>
+                            <li class="active" id="account"><strong>{{ __('resubscribe.Information and notes') }}</strong></li>
+                            <li id="personal"><strong>{{ __('resubscribe.Register') }}</strong></li>
+                            <li id="confirm"><strong>{{ __('resubscribe.Payment and termination') }}</strong></li>
                         </ul>
                         <div class="progress">
                             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
@@ -270,7 +292,7 @@
                             <div class="form-card">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h2 class="fs-title text-center">المعلومات العامة</h2>
+                                        <h2 class="fs-title text-center">{{ __('resubscribe.General information') }}</h2>
                                     </div>
                                 </div>
 
@@ -282,43 +304,43 @@
 
                             </div>
 
-                            <input type="button" name="next" class="next action-button" value="التالي" />
+                            <input type="button" name="next" class="next action-button" value="{{ __('resubscribe.Next') }}" />
                         </fieldset>
                         <fieldset>
                             <div class="form-card">
                                 <div class="row">
                                     <div class="col-7">
-                                        <h2 class="fs-title">التسجيل</h2>
+                                        <h2 class="fs-title">{{ __('resubscribe.Register') }}</h2>
                                     </div>
                                 </div>
 
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="std-section">القسم</label>
+                                        <label class="input-group-text" for="std-section">{{ __('resubscribe.Section') }}</label>
                                     </div>
                                     <select class="custom-select" name="section" id="std-section" required>
-                                        <option selected>اختر...</option>
-                                        <option value="1">بنين</option>
-                                        <option value="2">بنات</option>
+                                        <option selected>{{ __('resubscribe.Choose') }}...</option>
+                                        <option value="1">{{ __('resubscribe.Male') }}</option>
+                                        <option value="2">{{ __('resubscribe.Female') }}</option>
                                     </select>
                                 </div>
 
                                 <div class="form-group text-right">
-                                    <label for="std-number" class="text-right">الرقم التسلسلي:</label>
-                                    <input type="number" min="0" name="student_number" class="form-control" id="std-number" placeholder="الرقم التسلسلي" required>
+                                    <label for="std-number" class="text-right">{{ __('resubscribe.Serial Number') }}:</label>
+                                    <input type="number" min="0" name="student_number" class="form-control" id="std-number" placeholder="{{ __('resubscribe.Serial Number') }}" required>
                                 </div>
 
                                 <div class="form-group text-center">
-                                    <button type="button" class="btn btn-primary w-50" id="std-number-search">بحث</button>
+                                    <button type="button" class="btn btn-primary w-50" id="std-number-search">{{ __('resubscribe.Search') }}</button>
                                 </div>
 
                                 <div class="form-group text-right" id="std-name-section">
-                                    <label for="std-name" class="text-right">الأسم:</label>
+                                    <label for="std-name" class="text-right">{{ __('resubscribe.Name') }}:</label>
                                     <input type="text" min="0" name="student_name" class="form-control" id="std-name" placeholder="..." required>
                                 </div>
 
                                 <div class="form-group text-right">
-                                    <label for="residence_country">دولة الاقامة:</label>
+                                    <label for="residence_country">{{ __('resubscribe.Country of Residence') }}:</label>
                                     <select class="form-control"name="residence_country" id="residence_country" required>
                                         <option> - </option>
                                         @foreach($countries as $key => $country)
@@ -328,17 +350,17 @@
                                 </div>
 
                                 <div class="form-group text-right">
-                                    <label for="std-email">البريد الالكتروني:</label>
-                                    <input type="email" class="form-control" name="email" id="std-email" placeholder="البريد الالكتروني" required>
+                                    <label for="std-email">{{ __('resubscribe.Email') }}:</label>
+                                    <input type="email" class="form-control" name="email" id="std-email" placeholder="{{ __('resubscribe.Email') }}" required>
                                 </div>
                                 <div class="form-group text-right">
-                                    <label for="std-email-conf">تأكيد البريد الالكتروني:</label>
-                                    <input type="email" class="form-control" id="std-email-conf" placeholder="تأكيد البريد الالكتروني" required>
+                                    <label for="std-email-conf">{{ __('resubscribe.Confirm Email') }}:</label>
+                                    <input type="email" class="form-control" id="std-email-conf" placeholder="{{ __('resubscribe.Confirm Email') }}" required>
                                 </div>
 
                             </div>
-                            <input type="button" name="next" class="next action-button" value="التالي" />
-                            <input type="button" name="previous" class="previous action-button-previous" value="السابق" />
+                            <input type="button" name="next" class="next action-button" value="{{ __('resubscribe.Next') }}" />
+                            <input type="button" name="previous" class="previous action-button-previous" value="{{ __('resubscribe.Previous') }}" />
                         </fieldset>
 
                         <fieldset>
@@ -346,7 +368,7 @@
                             <div class="form-card">
                                 <div class="row">
                                     <div class="col-7">
-                                        <h2 class="fs-title">الدفع والانهاء</h2>
+                                        <h2 class="fs-title">{{ __('resubscribe.Payment and termination') }}</h2>
                                     </div>
                                 </div>
 
@@ -354,7 +376,7 @@
                                     <div class="form-check text-right">
                                         <input class="form-check-input w-auto" type="checkbox" value="" id="invalidCheck" required>
                                         <label class="form-check-label mr-4" for="invalidCheck">
-                                            أقر بصحة البيانات السابقة وبأنني اطلعت على كافة الشروط والأحكام وأتعهد بالاتزام بذلك.
+                                            {{ __('resubscribe.terms and conditions') }}
                                         </label>
                                         <div class="invalid-feedback">
                                         </div>
@@ -371,13 +393,13 @@
                                     <div class="form-check text-right">
                                         <input class="form-check-input w-auto" type="radio" name="payment_method" id="checkout_gateway" value="checkout_gateway">
                                         <label class="form-check-label mr-4" for="checkout_gateway">
-                                            السداد عبر البطاقة الائتمانية--> إجمالي الرسوم الدراسية + البنكية = 300$ (1125 ريال)
+                                            {{ __('resubscribe.Payment via credit card') }}
                                         </label>
                                     </div>
                                     <div class="form-check text-right">
                                         <input class="form-check-input w-auto" type="radio" name="payment_method" id="hsbc" value="hsbc">
                                         <label class="form-check-label mr-4" for="hsbc">
-                                            تحويل دولي (بنك HSBC)--->  إجمالي الرسوم الدراسية + البنكية = 310$ (1162 ريال)
+                                            {{ __('resubscribe.HSBC Bank') }}
                                         </label>
                                     </div>
                                 </div>
@@ -385,66 +407,66 @@
                                 <div id="hsbc-section-elements" class="d-none text-right">
                                     <br>
                                     <lable>
-                                        <strong>طريقة التسجيل:</strong>
+                                        <strong>{{ __('resubscribe.Registration method') }}:</strong>
                                     </lable>
 
                                     <table class="table table-bordered">
 
                                         <tbody>
                                         <tr>
-                                            <td>اسم البنك</td>
+                                            <td>{{ __('resubscribe.Bank name') }}</td>
                                             <td>The Hongkong and Shanghai Banking Corporation Limited (HSBC)</td>
                                         </tr>
                                         <tr>
-                                            <td>عنوان البنك</td>
+                                            <td>{{ __('resubscribe.Bank address') }}</td>
                                             <td>Queens Road Central Hong Kong 1</td>
                                         </tr>
                                         <tr>
-                                            <td>رمز السويفت</td>
+                                            <td>{{ __('resubscribe.Swift code') }}</td>
                                             <td>HSBCHKHHHKH</td>
                                         </tr>
                                         <tr>
-                                            <td>اسم المستفيد</td>
+                                            <td>{{ __('resubscribe.Beneficiary Name') }}</td>
                                             <td>FURQAN GROUP FOR EDUCATION AND IT LIMITED</td>
                                         </tr>
                                         <tr>
-                                            <td>رقم الحساب</td>
+                                            <td>{{ __('resubscribe.Account number') }}</td>
                                             <td>023832223838</td>
                                         </tr>
                                         <tr>
-                                            <td>عملة الحساب</td>
+                                            <td>{{ __('resubscribe.Account currency') }}</td>
                                             <td>دولار أمريكي (USD)</td>
                                         </tr>
                                         <tr>
-                                            <td>عنوان المستفيد</td>
+                                            <td>{{ __('resubscribe.Beneficiary address') }}</td>
                                             <td>Room 409 Beverley Commercial Center Kowloon Hong Kong</td>
                                         </tr>
                                         </tbody>
                                     </table>
 
                                     <div class="form-group">
-                                        <lable for="money_transfer_image_path">اختر صورة الحوالة:</lable>
+                                        <lable for="money_transfer_image_path">{{ __('resubscribe.Choose the transfer picture') }}:</lable>
                                         <input type="file" class="form-control" style="height: 50px" name="money_transfer_image_path" id="money_transfer_image_path">
                                     </div>
 
                                     <div class="form-group text-right">
-                                        <label for="bank_name">اسم البنك:</label>
-                                        <input type="text" class="form-control" name="bank_name" id="bank_name" placeholder="اسم البنك">
+                                        <label for="bank_name">{{ __('resubscribe.Bank name') }}:</label>
+                                        <input type="text" class="form-control" name="bank_name" id="bank_name" placeholder="{{ __('resubscribe.Bank name') }}">
                                     </div>
 
                                     <div class="form-group text-right">
-                                        <label for="account_owner">اسم صاحب الحساب (باللغة الانجليزية كما يظهر في البنك):</label>
-                                        <input type="text" class="form-control" name="account_owner" id="account_owner" placeholder="اسم صاحب الحساب">
+                                        <label for="account_owner">{{ __('resubscribe.Account holder name (in English as it appears in the bank)') }}</label>
+                                        <input type="text" class="form-control" name="account_owner" id="account_owner" placeholder="{{ __('resubscribe.Account holder name (in English as it appears in the bank)') }}">
                                     </div>
 
                                     <div class="form-group text-right">
-                                        <label for="transfer_date">تاريخ التحويل:</label>
+                                        <label for="transfer_date">{{ __('resubscribe.Transfer date') }}:</label>
                                         <input type="date" class="form-control" name="transfer_date" id="transfer_date">
                                     </div>
 
                                     <div class="form-group text-right">
-                                        <label for="bank_reference_number">الرقم المرجعي للعملية:</label>
-                                        <input type="text" class="form-control" name="bank_reference_number" id="bank_reference_number" placeholder="الرقم المرجعي للعملية">
+                                        <label for="bank_reference_number">{{ __('resubscribe.Operation reference number') }}:</label>
+                                        <input type="text" class="form-control" name="bank_reference_number" id="bank_reference_number" placeholder="{{ __('resubscribe.Operation reference number') }}">
                                     </div>
 
                                 </div>
@@ -452,8 +474,8 @@
                                 <input type="hidden" name="token_pay" id="token_pay">
                             </div>
 
-                            <button type="submit" id="submit-main-form" class="btn btn-secondary w-100 mt-2" disabled>ارسال</button>
-                            <input type="button" name="previous" class="previous action-button-previous" value="السابق" />
+                            <button type="submit" id="submit-main-form" class="btn btn-secondary w-100 mt-2" disabled>{{ __('resubscribe.Send') }}</button>
+                            <input type="button" name="previous" class="previous action-button-previous" value="{{ __('resubscribe.Previous') }}" />
 
                         </fieldset>
 
@@ -463,7 +485,7 @@
                         <div class="one-liner" style="flex-direction: column;justify-content: space-between;align-items: center;height: 100px;">
                             <div class="card-frame"></div>
                             <button class="btn btn-primary" id="pay-button" disabled>
-                                إتمام الدفع
+                                {{ __('resubscribe.Checkout') }}
                             </button>
                         </div>
                         <p class="error-message text-center"></p>
@@ -605,7 +627,7 @@
                     $('form #std-name').val(data.name);
                 },
                 error: function (data){
-                    $('form #std-name').val('الرقم التسلسي غير صحيح');
+                    $('form #std-name').val('{{ __('resubscribe.serial number is incorrect') }}');
                 }
             });
         });

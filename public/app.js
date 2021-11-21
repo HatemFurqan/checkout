@@ -65,7 +65,7 @@ function onCardTokenized(event) {
     //     'Your card token is: <span class="token">' +
     //     event.token +
     //     "</span>";
-    el.innerHTML = '<span class="success">' + "يمكنكم متابعة التسجيل بالنقر على زر الارسال بالاسفل" + "</span>";
+    // el.innerHTML = '<span class="success">' + "يمكنكم متابعة التسجيل بالنقر على زر الارسال بالاسفل" + "</span>";
     $('#token_pay').val(event.token);
 
     setTimeout(function(){
