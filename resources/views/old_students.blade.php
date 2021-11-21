@@ -244,7 +244,7 @@
 
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav m-auto">
                     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                         <li class="nav-item active">
                             <a class="nav-link"
@@ -296,11 +296,33 @@
                                     </div>
                                 </div>
 
-                                <p class="text-right">
-                                    أعزاءنا أولياء الأمور.. نفيدكم بأنه تم فتح مجال التسجيل للفصل الثاني2022 للطلاب المنتظمين بنظام التعليم عن بعد وستكون بداية الفصل الدراسي الثاني للطلاب والطالبات من تاريخ 02-01-2022 الموافق 29-05-1443هـ إلى تاريخ 28-04-2022 الموافق 27-09-1443 هـ. ملاحظة: للتسجيل في نظام التعليم الفردي (عن بعد) يمكنكم التسجيل في قائمة الانتظار
-                                    <a href="https://fg2020.com/HK/pages/349">بالضغط هنا</a>. - في حال وجود استفسارات حول آليات سداد الرسوم وخيارات الدفع المتاحة نفيدكم أنه قد تم تخصيص أحد ممثلي قسم الحسابات للرد على استفساراتكم حيال الأمر وتقديم الدعم الكامل عبر المكتب الافتراضي لحل أي عوائق إن شاء الله.. رابط المكتب الافتراضي:
-                                    <a href="https://furqangroup.zoom.us/j/99947595293">https://furqangroup.zoom.us/j/99947595293</a> الأسئلة الشائعة: / أوقات الاستقبال من (الأحد إلى الخميس): 9:00 صباحا - 10:00 مساء بتوقيت مكة المكرمة (GMT+3) 8:00 صباحا - 09:00 مساء بتوقيت المغرب العربي وفرنسا (GMT+1) 2:00 صباحا - 03:00 مساء بتوقيت نيويورك ( GMT-5) مع تمنياتنا للجميع بالتوفيق والنجاح.
-                                </p>
+                                @if(app()->getLocale() == 'ar')
+                                    <p class="text-right">
+                                        أعزاءنا أولياء الأمور.. نفيدكم بأنه تم فتح مجال التسجيل للفصل الثاني2022 للطلاب المنتظمين بنظام التعليم عن بعد وستكون بداية الفصل الدراسي الثاني للطلاب والطالبات من تاريخ 02-01-2022 الموافق 29-05-1443هـ إلى تاريخ 28-04-2022 الموافق 27-09-1443 هـ. ملاحظة: للتسجيل في نظام التعليم الفردي (عن بعد) يمكنكم التسجيل في قائمة الانتظار
+                                        <a href="https://fg2020.com/HK/pages/349">بالضغط هنا</a>. - في حال وجود استفسارات حول آليات سداد الرسوم وخيارات الدفع المتاحة نفيدكم أنه قد تم تخصيص أحد ممثلي قسم الحسابات للرد على استفساراتكم حيال الأمر وتقديم الدعم الكامل عبر المكتب الافتراضي لحل أي عوائق إن شاء الله.. رابط المكتب الافتراضي:
+                                        <a href="https://furqangroup.zoom.us/j/99947595293">https://furqangroup.zoom.us/j/99947595293</a> الأسئلة الشائعة: / أوقات الاستقبال من (الأحد إلى الخميس): 9:00 صباحا - 10:00 مساء بتوقيت مكة المكرمة (GMT+3) 8:00 صباحا - 09:00 مساء بتوقيت المغرب العربي وفرنسا (GMT+1) 2:00 صباحا - 03:00 مساء بتوقيت نيويورك ( GMT-5) مع تمنياتنا للجميع بالتوفيق والنجاح.
+                                    </p>
+                                @else
+                                    <p>
+                                        Dear Parents,
+                                        We’d like to announce the beginning of registration for the second semester 2022, which is available for distance-learning. The second semester is to begin from 02.01.2022 until 28.04.2022.
+                                        Note:
+                                        To register in the one-to-one classes, you can register in the waiting list. <a href="https://fg2020.com/HK/pages/349">click here</a>
+                                        -
+                                        If you had any questions regarding the payment options and methods, we would like to inform you that you can visit our virtual office where we have assigned one of our representatives from the financial department to answer your questions and help you with that.
+                                        -
+                                        virtual office link:
+                                        <a href="https://furqangroup.zoom.us/j/99947595293">https://furqangroup.zoom.us/j/99947595293</a>
+                                        Virtual office times:
+                                        From Sunday till Thursday
+                                        at
+                                        09:00AM - 10:00PM Mecca time (GMT + 3)
+                                        08:00AM - 09:00PM Morocco and France time (GMT+1)
+                                        02:00AM - 03:00PM New York time (GMT-5)
+                                        -
+                                        We wish you all good health and success by Allah will.
+                                    </p>
+                                @endif
 
                             </div>
 
@@ -527,7 +549,7 @@
 
     <!-- add frames script -->
 <script src="https://cdn.checkout.com/js/framesv2.min.js"></script>
-<script src="{{ asset('app.js') }}?v=1"></script>
+<script src="{{ asset('app.js') }}?v=2.13"></script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
