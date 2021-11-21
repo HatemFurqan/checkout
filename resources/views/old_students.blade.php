@@ -238,9 +238,21 @@
         <div class="row justify-content-center">
             <div class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
                 <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                    <h2 id="heading">التسجيل في الفصل الأول 2022</h2>
+                    <h2 id="heading">الفصل الدراسي الثاني 2022</h2>
 
-                    <form id="msform" action="" method="POST" enctype="multipart/form-data">
+                    @if(session('success'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    @if(session('error'))
+                        <div class="alert alert-danger" role="alert">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
+                    <form id="msform" action="{{ route('submit.re-subscribe') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <!-- progressbar -->
@@ -263,7 +275,9 @@
                                 </div>
 
                                 <p class="text-right">
-                                    أعزاءنا أولياء الأمور.. نفيدكم بأنه تم فتح مجال التسجيل للفصل الأول 2021 للطلاب المنتظمين بنظام التعليم عن بعد وستكون بداية الفصل الدراسي الأول للطلاب والطالبات من تاريخ 29/08/2021م الموافق 21/01/1443هـ إلى 31/12/2021م الموافق 26/05/1443هـ. ملاحظة: للتسجيل في نظام التعليم الفردي (عن بعد) يمكنكم التسجيل في قائمة الانتظار بالضغط هنا. - في حال وجود استفسارات حول آليات سداد الرسوم وخيارات الدفع المتاحة نفيدكم أنه قد تم تخصيص أحد ممثلي قسم الحسابات للرد على استفساراتكم حيال الأمر وتقديم الدعم الكامل عبر المكتب الافتراضي لحل أي عوائق إن شاء الله.. رابط المكتب الافتراضي: https://furqangroup.zoom.us/j/99947595293 الأسئلة الشائعة: / أوقات الاستقبال من (الأحد إلى الخميس): 9:00 صباحا - 10:00 مساء بتوقيت مكة المكرمة (GMT+3) 8:00 صباحا - 09:00 مساء بتوقيت المغرب العربي وفرنسا (GMT+1) 2:00 صباحا - 03:00 مساء بتوقيت نيويورك ( GMT-5) مع تمنياتنا للجميع بالتوفيق والنجاح.
+                                    أعزاءنا أولياء الأمور.. نفيدكم بأنه تم فتح مجال التسجيل للفصل الثاني2022 للطلاب المنتظمين بنظام التعليم عن بعد وستكون بداية الفصل الدراسي الثاني للطلاب والطالبات من تاريخ 02-01-2022 الموافق 29-05-1443هـ إلى تاريخ 28-04-2022 الموافق 27-09-1443 هـ. ملاحظة: للتسجيل في نظام التعليم الفردي (عن بعد) يمكنكم التسجيل في قائمة الانتظار
+                                    <a href="https://fg2020.com/HK/pages/349">بالضغط هنا</a>. - في حال وجود استفسارات حول آليات سداد الرسوم وخيارات الدفع المتاحة نفيدكم أنه قد تم تخصيص أحد ممثلي قسم الحسابات للرد على استفساراتكم حيال الأمر وتقديم الدعم الكامل عبر المكتب الافتراضي لحل أي عوائق إن شاء الله.. رابط المكتب الافتراضي:
+                                    <a href="https://furqangroup.zoom.us/j/99947595293">https://furqangroup.zoom.us/j/99947595293</a> الأسئلة الشائعة: / أوقات الاستقبال من (الأحد إلى الخميس): 9:00 صباحا - 10:00 مساء بتوقيت مكة المكرمة (GMT+3) 8:00 صباحا - 09:00 مساء بتوقيت المغرب العربي وفرنسا (GMT+1) 2:00 صباحا - 03:00 مساء بتوقيت نيويورك ( GMT-5) مع تمنياتنا للجميع بالتوفيق والنجاح.
                                 </p>
 
                             </div>
@@ -291,7 +305,7 @@
 
                                 <div class="form-group text-right">
                                     <label for="std-number" class="text-right">الرقم التسلسلي:</label>
-                                    <input type="number" min="0" class="form-control" id="std-number" placeholder="الرقم التسلسلي">
+                                    <input type="number" min="0" name="student_number" class="form-control" id="std-number" placeholder="الرقم التسلسلي" required>
                                 </div>
 
                                 <div class="form-group text-center">
@@ -300,7 +314,7 @@
 
                                 <div class="form-group text-right" id="std-name-section">
                                     <label for="std-name" class="text-right">الأسم:</label>
-                                    <input type="text" min="0" class="form-control" id="std-name" placeholder="..." required>
+                                    <input type="text" min="0" name="student_name" class="form-control" id="std-name" placeholder="..." required>
                                 </div>
 
                                 <div class="form-group text-right">
@@ -315,7 +329,7 @@
 
                                 <div class="form-group text-right">
                                     <label for="std-email">البريد الالكتروني:</label>
-                                    <input type="email" class="form-control" id="std-email" placeholder="البريد الالكتروني" required>
+                                    <input type="email" class="form-control" name="email" id="std-email" placeholder="البريد الالكتروني" required>
                                 </div>
                                 <div class="form-group text-right">
                                     <label for="std-email-conf">تأكيد البريد الالكتروني:</label>
@@ -328,6 +342,7 @@
                         </fieldset>
 
                         <fieldset>
+
                             <div class="form-card">
                                 <div class="row">
                                     <div class="col-7">
@@ -435,11 +450,26 @@
                                 </div>
 
                                 <input type="hidden" name="token_pay" id="token_pay">
-                                <button type="submit" class="btn btn-primary">ارسال</button>
-
                             </div>
+
+                            <button type="submit" id="submit-main-form" class="btn btn-secondary w-100 mt-2" disabled>ارسال</button>
+                            <input type="button" name="previous" class="previous action-button-previous" value="السابق" />
+
                         </fieldset>
+
                     </form>
+
+                    <form id="payment-form" method="POST" action="https://merchant.com/charge-card" class="d-none">
+                        <div class="one-liner" style="flex-direction: column;justify-content: space-between;align-items: center;height: 100px;">
+                            <div class="card-frame"></div>
+                            <button class="btn btn-primary" id="pay-button" disabled>
+                                إتمام الدفع
+                            </button>
+                        </div>
+                        <p class="error-message text-center"></p>
+                        <p class="success-payment-message text-center"></p>
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -455,16 +485,16 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="payment-form" method="POST" action="https://merchant.com/charge-card">
-                        <div class="one-liner" style="flex-direction: column;justify-content: space-between;align-items: center;height: 100px;">
-                            <div class="card-frame"></div>
-                            <button class="btn btn-primary" id="pay-button" disabled>
-                                إتمام الدفع
-                            </button>
-                        </div>
-                        <p class="error-message text-center"></p>
-                        <p class="success-payment-message text-center"></p>
-                    </form>
+{{--                    <form id="payment-form" method="POST" action="https://merchant.com/charge-card">--}}
+{{--                        <div class="one-liner" style="flex-direction: column;justify-content: space-between;align-items: center;height: 100px;">--}}
+{{--                            <div class="card-frame"></div>--}}
+{{--                            <button class="btn btn-primary" id="pay-button" disabled>--}}
+{{--                                إتمام الدفع--}}
+{{--                            </button>--}}
+{{--                        </div>--}}
+{{--                        <p class="error-message text-center"></p>--}}
+{{--                        <p class="success-payment-message text-center"></p>--}}
+{{--                    </form>--}}
                 </div>
                 <div class="modal-footer d-none">
                     <button type="button" class="d-none" id="close-modal" data-dismiss="modal">إغلاق</button>
@@ -518,6 +548,10 @@
                 duration: 500
             });
             setProgressBar(++current);
+
+            if($('#checkout_gateway').is(':checked')){
+                $("#payment-form").removeClass('d-none');
+            }
         });
 
         $(".previous").click(function(){
@@ -546,6 +580,9 @@
                 duration: 500
             });
             setProgressBar(--current);
+
+            $("#payment-form").addClass('d-none');
+
         });
 
         function setProgressBar(curStep){
@@ -577,13 +614,21 @@
             $("#hsbc-section-elements").removeClass('d-none');
             $("#hsbc-section-elements").show();
             $("#hsbc-section-elements input").prop('required',true);
+
+            $("#payment-form").addClass('d-none');
+            $("#submit-main-form").removeAttr('disabled');
+            $("#submit-main-form").removeClass('btn-secondary');
+            $("#submit-main-form").addClass('btn-primary');
+            $("#submit-main-form").removeClass('d-none');
         });
 
         $(document).on('click', 'form #checkout_gateway', function (e) {
             $("#hsbc-section-elements").addClass('d-none');
             $("#hsbc-section-elements").hide();
             $("#hsbc-section-elements input").removeAttr('required');
-            $("#lunch-modal").click();
+
+            $("#payment-form").removeClass('d-none');
+            $("#submit-main-form").addClass('d-none');
         });
 
     });

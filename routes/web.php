@@ -18,9 +18,7 @@ use Symfony\Component\Intl\Countries;
 */
 
 Route::get('/', function () {
-
     $countries = Countries::getNames('ar');
-
     return view('old_students', ['countries' => $countries]);
 });
 
