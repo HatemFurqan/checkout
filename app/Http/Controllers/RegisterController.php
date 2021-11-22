@@ -114,7 +114,12 @@ class RegisterController extends Controller
             Session::forget('payment_id');
             Session::forget('payment_status');
 
-            return Redirect::to($result->getTargetUrl());
+            $redirection = $result->getRedirection();
+            if ($redirection){
+                session()->flash('success', __('resubscribe.The registration process has been completed successfully'));
+                return Redirect::to($redirection);
+            }
+
         }else{
             $subscribe = Subscribe::query()->create([
                 'student_id' => $student->id,

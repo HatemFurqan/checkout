@@ -80,10 +80,10 @@ class Checkout
             Session::put('payment_id', $details->id);
             Session::put('payment_status', $details->status);
 
-            $redirection = $details->getRedirection();
-            if ($redirection) {
-                return redirect($redirection);
-            }
+//            $redirection = $details->getRedirection();
+//            if ($redirection) {
+//                return redirect($redirection);
+//            }
 
             return $details;
         } catch (CheckoutModelException $ex) {
