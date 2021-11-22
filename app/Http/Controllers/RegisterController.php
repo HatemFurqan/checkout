@@ -108,11 +108,13 @@ class RegisterController extends Controller
                 'email' => $request->email,
                 'payment_method' => 'checkout_gateway',
                 'payment_id' => Session::get('payment_id'),
+                'reference_number' => Session::get('reference_number'),
                 'payment_status' => Session::get('payment_status'),
             ]);
 
             Session::forget('payment_id');
             Session::forget('payment_status');
+            Session::forget('reference_number');
 
             $redirection = $result->getRedirection();
             if ($redirection){
