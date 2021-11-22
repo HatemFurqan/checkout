@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
     <style>
 
     * {
@@ -43,7 +47,8 @@
     #msform {
         text-align: center;
         position: relative;
-        margin-top: 20px
+        margin-top: 20px;
+        font-family: 'Cairo', sans-serif;
     }
 
     #std-name {
@@ -78,7 +83,7 @@
         margin-top: 2px;
         width: 100%;
         box-sizing: border-box;
-        font-family: montserrat;
+        font-family: 'Cairo', sans-serif;
         color: #2C3E50;
         background-color: #ECEFF1;
         font-size: 16px;
@@ -226,8 +231,9 @@
     }
 
     #msform label {
-        color: red !important;
+        color: black !important;
         font-weight: bold !important;
+        font-family: 'Cairo', sans-serif;
     }
 
     #msform #checks-section label {
@@ -253,7 +259,7 @@
     }
 </style>
 
-    <style>*,*::after,*::before{box-sizing:border-box}html{padding:1rem;background-color:#FFF;font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif}#payment-form{width:31.5rem;margin:0 auto}iframe{width:100%}.one-liner{display:flex;flex-direction:column}#pay-button{border:none;border-radius:3px;color:#FFF;font-weight:500;height:40px;width:100%;background-color:#13395E;box-shadow:0 1px 3px 0 rgba(19,57,94,0.4)}#pay-button:active{background-color:#0B2A49;box-shadow:0 1px 3px 0 rgba(19,57,94,0.4)}#pay-button:hover{background-color:#15406B;box-shadow:0 2px 5px 0 rgba(19,57,94,0.4)}#pay-button:disabled{background-color:#697887;box-shadow:none}#pay-button:not(:disabled){cursor:pointer}.card-frame{border:solid 1px #13395E;border-radius:3px;width:100%;margin-bottom:8px;height:40px;box-shadow:0 1px 3px 0 rgba(19,57,94,0.2)}.card-frame.frame--rendered{opacity:1}.card-frame.frame--rendered.frame--focus{border:solid 1px #13395E;box-shadow:0 2px 5px 0 rgba(19,57,94,0.15)}.card-frame.frame--rendered.frame--invalid{border:solid 1px #D96830;box-shadow:0 2px 5px 0 rgba(217,104,48,0.15)}.success-payment-message{color:#13395E;line-height:1.4}.token{color:#b35e14;font-size:0.9rem;font-family:monospace}@media screen and (min-width: 31rem){.one-liner{flex-direction:row}.card-frame{width:318px;margin-bottom:0}#pay-button{width:175px;margin-left:8px}}</style>
+    <style>*,*::after,*::before{box-sizing:border-box}html{padding:1rem;background-color:#FFF;font-family: 'Cairo', sans-serif;, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif}#payment-form{width:31.5rem;margin:0 auto}iframe{width:100%}.one-liner{display:flex;flex-direction:column}#pay-button{border:none;border-radius:3px;color:#FFF;font-weight:500;height:40px;width:100%;background-color:#13395E;box-shadow:0 1px 3px 0 rgba(19,57,94,0.4)}#pay-button:active{background-color:#0B2A49;box-shadow:0 1px 3px 0 rgba(19,57,94,0.4)}#pay-button:hover{background-color:#15406B;box-shadow:0 2px 5px 0 rgba(19,57,94,0.4)}#pay-button:disabled{background-color:#697887;box-shadow:none}#pay-button:not(:disabled){cursor:pointer}.card-frame{border:solid 1px #13395E;border-radius:3px;width:100%;margin-bottom:8px;height:40px;box-shadow:0 1px 3px 0 rgba(19,57,94,0.2)}.card-frame.frame--rendered{opacity:1}.card-frame.frame--rendered.frame--focus{border:solid 1px #13395E;box-shadow:0 2px 5px 0 rgba(19,57,94,0.15)}.card-frame.frame--rendered.frame--invalid{border:solid 1px #D96830;box-shadow:0 2px 5px 0 rgba(217,104,48,0.15)}.success-payment-message{color:#13395E;line-height:1.4}.token{color:#b35e14;font-size:0.9rem;font-family: 'Cairo', sans-serif;}@media screen and (min-width: 31rem){.one-liner{flex-direction:row}.card-frame{width:318px;margin-bottom:0}#pay-button{width:175px;margin-left:8px}}</style>
 
 </head>
 <body>
@@ -322,29 +328,86 @@
 
                                 @if(app()->getLocale() == 'ar')
                                     <p class="text-right">
-                                        أعزاءنا أولياء الأمور.. نفيدكم بأنه تم فتح مجال التسجيل للفصل الثاني2022 للطلاب المنتظمين بنظام التعليم عن بعد وستكون بداية الفصل الدراسي الثاني للطلاب والطالبات من تاريخ 02-01-2022 الموافق 29-05-1443هـ إلى تاريخ 28-04-2022 الموافق 27-09-1443 هـ. ملاحظة: للتسجيل في نظام التعليم الفردي (عن بعد) يمكنكم التسجيل في قائمة الانتظار
-                                        <a href="https://fg2020.com/HK/pages/349">بالضغط هنا</a>. - في حال وجود استفسارات حول آليات سداد الرسوم وخيارات الدفع المتاحة نفيدكم أنه قد تم تخصيص أحد ممثلي قسم الحسابات للرد على استفساراتكم حيال الأمر وتقديم الدعم الكامل عبر المكتب الافتراضي لحل أي عوائق إن شاء الله.. رابط المكتب الافتراضي:
-                                        <a href="https://furqangroup.zoom.us/j/99947595293">https://furqangroup.zoom.us/j/99947595293</a> الأسئلة الشائعة: / أوقات الاستقبال من (الأحد إلى الخميس): 9:00 صباحا - 10:00 مساء بتوقيت مكة المكرمة (GMT+3) 8:00 صباحا - 09:00 مساء بتوقيت المغرب العربي وفرنسا (GMT+1) 2:00 صباحا - 03:00 مساء بتوقيت نيويورك ( GMT-5) مع تمنياتنا للجميع بالتوفيق والنجاح.
+                                        أعزاءنا أولياء الأمور.. نفيدكم بأنه تم فتح مجال التسجيل للفصل
+                                        الثاني 2022 للطلاب المنتظمين بنظام التعليم عن بعد وستكون بداية الفصل الدراسي الثاني للطلاب والطالبات من تاريخ 02-01-2022 الموافق 29-05-1443هـ إلى تاريخ 28-04-2022 الموافق 27-09-1443 هـ.
+                                        <br>
+                                        <br>
+                                        <span class="d-block" style="color: #ea3223; font-weight: bold;">ملاحظة:</span>
+                                        <span style="color: #ea3223; font-weight: bold;">
+                                                للتسجيل في نظام التعليم الفردي (عن بعد) يمكنكم التسجيل في قائمة الانتظار
+                                        </span>
+                                        <a href="https://fg2020.com/HK/pages/349">بالضغط هنا</a>.
+                                        <br>
+                                        <br>
+                                        في حال وجود استفسارات حول آليات سداد الرسوم وخيارات الدفع المتاحة نفيدكم أنه قد تم تخصيص أحد ممثلي قسم الحسابات للرد على استفساراتكم حيال الأمر وتقديم الدعم الكامل عبر المكتب الافتراضي لحل أي عوائق إن شاء الله..
+
+                                        <br>
+                                        <br>
+                                        <span class="d-block text-center" style="color: #ea3223; font-weight: bold;">رابط المكتب الافتراضي:</span>
+                                        <a class="text-center w-100 d-block" href="https://furqangroup.zoom.us/j/99947595293">https://furqangroup.zoom.us/j/99947595293</a>
+                                        <br>
+
+                                        <span class="d-block text-center" style="font-weight: bold !important; color: black; color: #ea3223;">الأسئلة الشائعة:</span>
+
+                                        <span class="d-block text-center" style="color: #48742b;">أوقات الاستقبال من (الأحد إلى الخميس):</span>
+
+                                         <ul class="text-right">
+                                            <li>9:00 صباحا - 10:00 مساء بتوقيت مكة المكرمة (GMT+3)</li>
+                                            <li>8:00 صباحا - 09:00 مساء بتوقيت المغرب العربي وفرنسا  (GMT+1)</li>
+                                            <li>2:00 صباحا - 03:00 مساء بتوقيت نيويورك ( GMT-5)</li>
+                                        </ul>
+
+                                        <span class="text-center d-block">مع تمنياتنا للجميع بالتوفيق والنجاح.</span>
+
                                     </p>
                                 @else
                                     <p>
-                                        Dear Parents,
-                                        We’d like to announce the beginning of registration for the second semester 2022, which is available for distance-learning. The second semester is to begin from 02.01.2022 until 28.04.2022.
-                                        Note:
-                                        To register in the one-to-one classes, you can register in the waiting list. <a href="https://fg2020.com/HK/pages/349">click here</a>
-                                        -
-                                        If you had any questions regarding the payment options and methods, we would like to inform you that you can visit our virtual office where we have assigned one of our representatives from the financial department to answer your questions and help you with that.
-                                        -
-                                        virtual office link:
-                                        <a href="https://furqangroup.zoom.us/j/99947595293">https://furqangroup.zoom.us/j/99947595293</a>
-                                        Virtual office times:
-                                        From Sunday till Thursday
-                                        at
-                                        09:00AM - 10:00PM Mecca time (GMT + 3)
-                                        08:00AM - 09:00PM Morocco and France time (GMT+1)
-                                        02:00AM - 03:00PM New York time (GMT-5)
-                                        -
-                                        We wish you all good health and success by Allah will.
+                                        <span class="d-block">Dear Parents,</span>
+                                        <span class="d-block">
+                                            We’d like to announce the beginning of registration for the second semester 2022, which is available for distance-learning. The second semester is to begin from 02.01.2022 until 28.04.2022.
+                                        </span>
+
+                                        <span class="d-block" style="color: #bb271a; font-weight: bold;">Note:</span>
+                                        <span class="d-block" style="color: #bb271a; font-weight: bold;">
+                                            To register in the one-to-one classes, you can register in the waiting list. <a href="https://fg2020.com/HK/pages/349">click here</a>
+                                        </span>
+
+                                        <br>
+
+                                        <span class="d-block">
+                                            If you had any questions regarding the payment options and methods, we would like to inform you that you can visit our virtual office where we have assigned one of our representatives from the financial department to answer your questions and help you with that.
+                                        </span>
+
+                                        <span class="w-100 text-center d-block" style="color: #bb271a; font-weight: bold;">
+                                            virtual office link:
+                                        </span>
+
+                                        <a class="w-100 text-center d-block" href="https://furqangroup.zoom.us/j/99947595293">
+                                            https://furqangroup.zoom.us/j/99947595293
+                                        </a>
+                                        <br>
+
+                                        <span class="w-100 text-center d-block" style="color: #bb271a; font-weight: bold;">
+                                            Virtual office times:
+                                        </span>
+
+                                        <span class="w-100 text-center d-block" style="color: #48742b; font-weight: bold;">
+                                            From Sunday till Thursday
+                                        </span>
+                                        <span class="w-100 text-center d-block" style="color: #bb271a; font-weight: bold;">
+                                            at
+                                        </span>
+
+                                        <ul>
+                                            <li>09:00AM - 10:00PM Mecca time (GMT + 3)</li>
+                                            <li>08:00AM - 09:00PM Morocco and France time (GMT+1)</li>
+                                            <li>02:00AM - 03:00PM New York time (GMT-5)</li>
+                                        </ul>
+
+                                        <span class="w-100 text-center d-block" style="color: black; font-weight: bold;">
+                                            We wish you all good health and success by Allah will.
+                                        </span>
+
                                     </p>
                                 @endif
 
@@ -451,9 +514,9 @@
 
                                 <div id="hsbc-section-elements" class="d-none text-right">
                                     <br>
-                                    <lable>
+                                    <label>
                                         <strong>{{ __('resubscribe.Registration method') }}</strong>
-                                    </lable>
+                                    </label>
 
                                     <table class="table table-bordered">
 
@@ -490,7 +553,7 @@
                                     </table>
 
                                     <div class="form-group">
-                                        <lable for="money_transfer_image_path">{{ __('resubscribe.Choose the transfer picture') }}</lable>
+                                        <label for="money_transfer_image_path">{{ __('resubscribe.Choose the transfer picture') }}</label>
                                         <input type="file" class="form-control" style="height: 50px" name="money_transfer_image_path" id="money_transfer_image_path">
                                     </div>
 
