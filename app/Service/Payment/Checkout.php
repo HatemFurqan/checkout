@@ -2,6 +2,8 @@
 
 namespace App\Service\Payment;
 
+use App\Models\Subscribe;
+use Carbon\Carbon;
 use Checkout\CheckoutApi;
 use Checkout\Library\Exceptions\CheckoutHttpException;
 use Checkout\Library\Exceptions\CheckoutModelException;
@@ -52,6 +54,14 @@ class Checkout
 
     public function payment(string $token = null)
     {
+
+        // now()
+        $now = Carbon::now();
+        // SELECT max(number) from subscriptions where year(created_at) = ?
+
+        $reference_number = Subscribe::whereYear('created_at', '=', $now->year)->max('reference_number');
+        $reference_number = $reference_number ? intval($reference_number) + 1 : $now->year . '0001';
+
         $checkout = new CheckoutApi($this->secret, false);
         $method = new TokenSource($token);
 
@@ -69,7 +79,7 @@ class Checkout
         $payment->billing_descriptor = new BillingDescriptor('Dynamic desc charge', 'City charge');
         $payment->amount = 30000;
         $payment->capture = true;
-        $payment->reference = 'ORD-0908571';
+        $payment->reference = $reference_number;
         $payment->threeDs = new ThreeDs(true);
         $payment->risk = new Risk(false);
 //        $payment->setIdempotencyKey('123');
@@ -79,6 +89,7 @@ class Checkout
 
             Session::put('payment_id', $details->id);
             Session::put('payment_status', $details->status);
+            Session::put('reference_number', $reference_number);
 
 //            $redirection = $details->getRedirection();
 //            if ($redirection) {
