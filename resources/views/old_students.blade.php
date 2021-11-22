@@ -46,6 +46,10 @@
         margin-top: 20px
     }
 
+    #std-name {
+       cursor: default !important;
+    }
+
     #msform fieldset {
         background: white;
         border: 0 none;
@@ -221,6 +225,15 @@
         z-index: -1
     }
 
+    #msform label {
+        color: red !important;
+        font-weight: bold !important;
+    }
+
+    #msform #checks-section label {
+        color: black !important;
+    }
+
     #progressbar li.active:before,
     #progressbar li.active:after {
         background: #25408F
@@ -298,7 +311,7 @@
                             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                         <br>
-                        <!-- fieldsets -->
+                            <!-- fieldsets -->
                         <fieldset>
                             <div class="form-card">
                                 <div class="row">
@@ -347,6 +360,8 @@
                                     </div>
                                 </div>
 
+{{--                                <label class="text-danger mb-3 w-100 text-right">{{ __('resubscribe.Required') }}</label>--}}
+
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="std-section">{{ __('resubscribe.Section') }}</label>
@@ -359,7 +374,7 @@
                                 </div>
 
                                 <div class="form-group text-right">
-                                    <label for="std-number" class="text-right">{{ __('resubscribe.Serial Number') }}:</label>
+                                    <label for="std-number" class="text-right">{{ __('resubscribe.Serial Number') }}</label>
                                     <input type="number" min="0" name="student_number" class="form-control" id="std-number" placeholder="{{ __('resubscribe.Serial Number') }}" required>
                                 </div>
 
@@ -368,12 +383,12 @@
                                 </div>
 
                                 <div class="form-group text-right" id="std-name-section">
-                                    <label for="std-name" class="text-right">{{ __('resubscribe.Name') }}:</label>
-                                    <input type="text" min="0" name="student_name" class="form-control" id="std-name" placeholder="..." required>
+                                    <label for="std-name" class="text-right">{{ __('resubscribe.Name') }} *</label>
+                                    <input type="text" min="0" name="student_name" class="form-control" id="std-name" placeholder="..." required readonly>
                                 </div>
 
                                 <div class="form-group text-right">
-                                    <label for="residence_country">{{ __('resubscribe.Country of Residence') }}:</label>
+                                    <label for="residence_country">{{ __('resubscribe.Country of Residence') }}</label>
                                     <select class="form-control"name="residence_country" id="residence_country" required>
                                         <option> - </option>
                                         @foreach($countries as $key => $country)
@@ -383,11 +398,11 @@
                                 </div>
 
                                 <div class="form-group text-right">
-                                    <label for="std-email">{{ __('resubscribe.Email') }}:</label>
+                                    <label for="std-email">{{ __('resubscribe.Email') }}</label>
                                     <input type="email" class="form-control" name="email" id="std-email" placeholder="{{ __('resubscribe.Email') }}" required>
                                 </div>
                                 <div class="form-group text-right">
-                                    <label for="std-email-conf">{{ __('resubscribe.Confirm Email') }}:</label>
+                                    <label for="std-email-conf">{{ __('resubscribe.Confirm Email') }}</label>
                                     <input type="email" class="form-control" id="std-email-conf" placeholder="{{ __('resubscribe.Confirm Email') }}" required>
                                 </div>
 
@@ -396,7 +411,7 @@
                             <input type="button" name="previous" class="previous action-button-previous" value="{{ __('resubscribe.Previous') }}" />
                         </fieldset>
 
-                        <fieldset>
+                        <fieldset id="checks-section">
 
                             <div class="form-card">
                                 <div class="row">
@@ -407,18 +422,14 @@
 
                                 <div class="form-group text-right">
                                     <div class="form-check text-right">
-                                        <input class="form-check-input w-auto" type="checkbox" value="" id="invalidCheck" required>
-                                        <label class="form-check-label mr-4" for="invalidCheck">
+                                        <input class="form-check-input w-auto" type="checkbox" value="" id="agree-terms" required>
+                                        <label class="form-check-label mr-4" for="agree-terms">
                                             {{ __('resubscribe.terms and conditions') }}
                                         </label>
                                         <div class="invalid-feedback">
                                         </div>
                                     </div>
                                 </div>
-
-                                <button type="button" class="d-none" id="lunch-modal" data-toggle="modal" data-target="#exampleModal">
-
-                                </button>
 
                                 <hr>
 
@@ -429,6 +440,7 @@
                                             {{ __('resubscribe.Payment via credit card') }}
                                         </label>
                                     </div>
+                                    <br>
                                     <div class="form-check text-right">
                                         <input class="form-check-input w-auto" type="radio" name="payment_method" id="hsbc" value="hsbc">
                                         <label class="form-check-label mr-4" for="hsbc">
@@ -440,7 +452,7 @@
                                 <div id="hsbc-section-elements" class="d-none text-right">
                                     <br>
                                     <lable>
-                                        <strong>{{ __('resubscribe.Registration method') }}:</strong>
+                                        <strong>{{ __('resubscribe.Registration method') }}</strong>
                                     </lable>
 
                                     <table class="table table-bordered">
@@ -478,12 +490,12 @@
                                     </table>
 
                                     <div class="form-group">
-                                        <lable for="money_transfer_image_path">{{ __('resubscribe.Choose the transfer picture') }}:</lable>
+                                        <lable for="money_transfer_image_path">{{ __('resubscribe.Choose the transfer picture') }}</lable>
                                         <input type="file" class="form-control" style="height: 50px" name="money_transfer_image_path" id="money_transfer_image_path">
                                     </div>
 
                                     <div class="form-group text-right">
-                                        <label for="bank_name">{{ __('resubscribe.Bank name') }}:</label>
+                                        <label for="bank_name">{{ __('resubscribe.Bank name') }}</label>
                                         <input type="text" class="form-control" name="bank_name" id="bank_name" placeholder="{{ __('resubscribe.Bank name') }}">
                                     </div>
 
@@ -493,12 +505,12 @@
                                     </div>
 
                                     <div class="form-group text-right">
-                                        <label for="transfer_date">{{ __('resubscribe.Transfer date') }}:</label>
+                                        <label for="transfer_date">{{ __('resubscribe.Transfer date') }}</label>
                                         <input type="date" class="form-control" name="transfer_date" id="transfer_date">
                                     </div>
 
                                     <div class="form-group text-right">
-                                        <label for="bank_reference_number">{{ __('resubscribe.Operation reference number') }}:</label>
+                                        <label for="bank_reference_number">{{ __('resubscribe.Operation reference number') }}</label>
                                         <input type="text" class="form-control" name="bank_reference_number" id="bank_reference_number" placeholder="{{ __('resubscribe.Operation reference number') }}">
                                     </div>
 
@@ -581,29 +593,33 @@
         $(".next").click(function(){
 
             current_fs = $(this).parent();
-            next_fs = $(this).parent().next();
 
-//Add Class Active
-            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+            if (validate(current_fs.find("input[required]"))){
+                next_fs = $(this).parent().next();
 
-//show the next fieldset
-            next_fs.show();
-//hide the current fieldset with style
-            current_fs.animate({opacity: 0}, {
-                step: function(now) {
-// for making fielset appear animation
-                    opacity = 1 - now;
+                //Add Class Active
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
-                    current_fs.css({
-                        'display': 'none',
-                        'position': 'relative'
-                    });
-                    next_fs.css({'opacity': opacity});
-                },
-                duration: 500
-            });
-            setProgressBar(++current);
+                //show the next fieldset
+                next_fs.show();
 
+                //hide the current fieldset with style
+                current_fs.animate({opacity: 0}, {
+                    step: function(now) {
+
+                        // for making fieldset appear animation
+                        opacity = 1 - now;
+
+                        current_fs.css({
+                            'display': 'none',
+                            'position': 'relative'
+                        });
+                        next_fs.css({'opacity': opacity});
+                    },
+                    duration: 500
+                });
+                setProgressBar(++current);
+            }
             if($('#checkout_gateway').is(':checked')){
                 $("#payment-form").removeClass('d-none');
             }
@@ -614,16 +630,16 @@
             current_fs = $(this).parent();
             previous_fs = $(this).parent().prev();
 
-//Remove class active
+            //Remove class active
             $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
 
-//show the previous fieldset
+            //show the previous fieldset
             previous_fs.show();
 
-//hide the current fieldset with style
+            //hide the current fieldset with style
             current_fs.animate({opacity: 0}, {
                 step: function(now) {
-// for making fielset appear animation
+                // for making fieldset appear animation
                     opacity = 1 - now;
 
                     current_fs.css({
@@ -658,32 +674,87 @@
                 url: '{{ route('semester.registration.getStudentInfo') }}?std_number=' + $('form #std-number').val() + '&std_section=' + $('form #std-section').val(),
                 success: function (data) {
                     $('form #std-name').val(data.name);
+                    $('form #std-name').css('border-color', 'green');
                 },
                 error: function (data){
-                    $('form #std-name').val('{{ __('resubscribe.serial number is incorrect') }}');
+                    $('form #std-name').val('');
+                    $('form #std-name').attr("placeholder", '{{ __('resubscribe.serial number is incorrect') }}');
+                    $('form #std-name').css('border-color', 'red');
                 }
             });
         });
 
         $(document).on('click', 'form #hsbc', function (e) {
-            $("#hsbc-section-elements").removeClass('d-none');
-            $("#hsbc-section-elements").show();
-            $("#hsbc-section-elements input").prop('required',true);
 
-            $("#payment-form").addClass('d-none');
-            $("#submit-main-form").removeAttr('disabled');
-            $("#submit-main-form").removeClass('btn-secondary');
-            $("#submit-main-form").addClass('btn-primary');
-            $("#submit-main-form").removeClass('d-none');
+            if($('#agree-terms').is(':checked')){
+                $("#hsbc-section-elements").removeClass('d-none');
+                $("#hsbc-section-elements").show();
+                $("#hsbc-section-elements input").prop('required',true);
+
+                $("#payment-form").addClass('d-none');
+                $("#submit-main-form").removeAttr('disabled');
+                $("#submit-main-form").removeClass('btn-secondary');
+                $("#submit-main-form").addClass('btn-primary');
+                $("#submit-main-form").removeClass('d-none');
+            }else{
+                e.preventDefault();
+                alert('يجب عليك الموافقة على صحة البيانات السابقة')
+            }
         });
 
         $(document).on('click', 'form #checkout_gateway', function (e) {
-            $("#hsbc-section-elements").addClass('d-none');
-            $("#hsbc-section-elements").hide();
-            $("#hsbc-section-elements input").removeAttr('required');
 
-            $("#payment-form").removeClass('d-none');
-            $("#submit-main-form").addClass('d-none');
+            if($('#agree-terms').is(':checked')){
+                $("#hsbc-section-elements").addClass('d-none');
+                $("#hsbc-section-elements").hide();
+                $("#hsbc-section-elements input").removeAttr('required');
+
+                $("#payment-form").removeClass('d-none');
+                $("#submit-main-form").addClass('d-none');
+            }else{
+                e.preventDefault();
+                alert('يجب عليك الموافقة على صحة البيانات السابقة')
+            }
+
+        });
+
+        function validate(inputs) {
+            flag = true;
+
+            for (index = 0; index < inputs.length; ++index) {
+                if (inputs[index].value == null || inputs[index].value == ""){
+                    $(inputs[index]).css('border-color', 'red');
+                    flag = false;
+                }else{
+                    $(inputs[index]).css('border-color', 'green');
+                }
+
+                if ($(inputs[index]).attr('id') == 'std-email' || $(inputs[index]).attr('id') == 'std-email-conf'){
+                    if ($('#std-email').val() == $('#std-email-conf').val() &&
+                        $('#std-email').val() != "" &&
+                        $('#std-email').val() != null &&
+                        $('#std-email-conf').val() != "" &&
+                        $('#std-email-conf').val() != null
+                    ){
+                        $('#std-email-conf').css('border-color', 'green');
+                        $('#std-email').css('border-color', 'green');
+                    }else{
+                        $('#std-email-conf').css('border-color', 'red');
+                        $('#std-email').css('border-color', 'red');
+                        flag = false;
+                    }
+
+                }
+
+            }
+
+            return flag;
+        }
+
+        $(document).on('change', 'form#msform input[required]', function (e) {
+            if ($(this).val() != "" && $(this).val() != null){
+                $(this).css('border-color', 'green');
+            }
         });
 
     });
