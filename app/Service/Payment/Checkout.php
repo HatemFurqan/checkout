@@ -41,7 +41,7 @@ class Checkout
         $response = $client->request('POST', '/payment-links',
             [
                 'json' => [
-                    "amount" => 5,
+                    "amount" => 30000,
                 ], 'headers' => [
                     'Authorization' => "pk_a6b33af2-dd97-4204-9df8-70bd81cfd9d0"
                 ]
@@ -67,7 +67,7 @@ class Checkout
             '0044', '02073233888'
         ]);
         $payment->billing_descriptor = new BillingDescriptor('Dynamic desc charge', 'City charge');
-        $payment->amount = 1;
+        $payment->amount = 30000;
         $payment->capture = true;
         $payment->reference = 'ORD-0908571';
         $payment->threeDs = new ThreeDs(true);
