@@ -54,11 +54,12 @@ class RegisterController extends Controller
 
     /**
      * @param string $token
+     * @param array $customer
      * @return string
      */
-    public function payment(string $token)
+    public function payment(string $token, array $customer)
     {
-        $result = (new Checkout())->payment($token);
+        $result = (new Checkout())->payment($token, $customer);
 
         return $result;
     }
@@ -99,7 +100,9 @@ class RegisterController extends Controller
         }
 
         if ($request->payment_method == 'checkout_gateway') {
-            $result  = $this->payment($request->token_pay);
+
+            $customer = ['email', $request->email, 'name', $request->student_name];
+            $result  = $this->payment($request->token_pay, $customer);
 
             $subscribe = Subscribe::query()->create([
                 'student_id' => $student->id,
