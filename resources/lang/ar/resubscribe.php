@@ -39,5 +39,6 @@ return [
     'The students excuse is not in our records' => 'عذر الطالب غير موجود في سجلاتنا',
     'The registration process has been completed successfully' => 'تم إتمام عملية التسجيل بنجاح',
     'Required' => 'إلزامي *',
+    'Payment failed, please try again' => 'فشلت عملية الدفع، يرجى إعادة المحاولة',
 
 ];

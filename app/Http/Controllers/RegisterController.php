@@ -94,7 +94,6 @@ class RegisterController extends Controller
             ->first();
 
         if (is_null($student)){
-
             session()->flash('error', __('resubscribe.The students excuse is not in our records'));
             return redirect()->back();
         }
@@ -118,7 +117,6 @@ class RegisterController extends Controller
 
             $redirection = $result->getRedirection();
             if ($redirection){
-                session()->flash('success', __('resubscribe.The registration process has been completed successfully'));
                 return Redirect::to($redirection);
             }
 
