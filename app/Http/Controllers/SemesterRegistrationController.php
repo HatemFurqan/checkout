@@ -36,7 +36,12 @@ class SemesterRegistrationController extends Controller
                             'payment_status' => $data->status
                         ]);
 
-                    session()->flash('success', __('resubscribe.The registration process has been completed successfully'));
+                    if ($data->approved){
+                        session()->flash('success', __('resubscribe.The registration process has been completed successfully'));
+                    }else{
+                        session()->flash('error', __('resubscribe.Payment failed, please try again'));
+                    }
+
                 }else{
                     session()->flash('error', __('resubscribe.Payment failed, please try again'));
                 }
