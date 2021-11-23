@@ -101,7 +101,7 @@ class RegisterController extends Controller
 
         if ($request->payment_method == 'checkout_gateway') {
 
-            $customer = ['email', $request->email, 'name', $request->student_name];
+            $customer = ['email' => $request->email, 'name' => $request->student_name];
             $result  = $this->payment($request->token_pay, $customer);
 
             $subscribe = Subscribe::query()->create([
