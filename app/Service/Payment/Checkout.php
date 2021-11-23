@@ -80,6 +80,8 @@ class Checkout
         $payment->amount = 30000;
         $payment->capture = true;
         $payment->reference = $reference_number;
+        $payment->success_url = 'https://reports.furqangroup.com/checkout';
+        $payment->failure_url = 'https://reports.furqangroup.com/checkout';
         $payment->threeDs = new ThreeDs(true);
         $payment->risk = new Risk(false);
 //        $payment->setIdempotencyKey('123');
