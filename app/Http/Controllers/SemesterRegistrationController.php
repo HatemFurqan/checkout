@@ -27,11 +27,13 @@ class SemesterRegistrationController extends Controller
                         ]
                     ]);
 
+                $data = json_decode($response->getBody()->getContents());
+
                 if ($response->getStatusCode() != 404){
                     Subscribe::query()
-                        ->where('payment_id', '=', $response->id)
+                        ->where('payment_id', '=', $data->id)
                         ->update([
-                            'payment_status' => $response->status
+                            'payment_status' => $data->status
                         ]);
 
                     session()->flash('success', __('resubscribe.The registration process has been completed successfully'));
