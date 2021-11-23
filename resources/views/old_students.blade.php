@@ -279,7 +279,8 @@
                         <li class="nav-item active">
                             <a class="nav-link"
                                href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"> {{ $properties['native'] }}
-                                <span class="sr-only">(current)</span></a>
+                                <span class="sr-only">(current)</span>
+                            </a>
                         </li>
                     @endforeach
                 </ul>
@@ -500,10 +501,12 @@
                                     <div class="form-check text-right">
                                         <input class="form-check-input w-auto" type="radio" name="payment_method" id="checkout_gateway" value="checkout_gateway">
                                         <label class="form-check-label mr-4" for="checkout_gateway">
-                                            {{ __('resubscribe.Payment via credit card') }}
+                                            {!! __('resubscribe.Payment via credit card') !!}
                                         </label>
+                                        <img class="text-center d-block" style="width: 38%;margin: auto;margin-top: 9px;" src="{{ asset('card-icons/cards.png') }}" alt="Cards icons">
                                     </div>
                                     <br>
+
                                     <div class="form-check text-right">
                                         <input class="form-check-input w-auto" type="radio" name="payment_method" id="hsbc" value="hsbc">
                                         <label class="form-check-label mr-4" for="hsbc">
