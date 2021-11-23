@@ -45,31 +45,15 @@ class SemesterRegistrationController extends Controller
                 session()->flash('error', __('resubscribe.Payment failed, please try again'));
                 return redirect()->route('semester.registration.index');
             }
-
         }
 
         $countries = Countries::getNames(App::getLocale());
         return view('old_students', ['countries' => $countries]);
     }
 
-    public function create()
-    {
-        return view('subscribe');
-    }
-
     public function store(Request $request)
     {
-        dd($request->all());
-    }
 
-    /**
-     * @param string $token
-     * @return string
-     */
-    public function payment(string $token): string
-    {
-        $data = (new Checkout())->payment($token);
-        return $data->status;
     }
 
     public function getStudentInfo()

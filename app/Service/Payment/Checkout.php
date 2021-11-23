@@ -52,7 +52,7 @@ class Checkout
         return $data->status;
     }
 
-    public function payment(string $token = null)
+    public function payment(string $token = null, $customer = null)
     {
 
         // now()
@@ -66,16 +66,16 @@ class Checkout
         $method = new TokenSource($token);
 
         $payment = new Payment($method, 'USD');
-        $payment->customer = $this->customer('ahmed@email.com', 'Ahmed');
-        $payment->shipping = $this->shipping([
-            '14-17 Wells Mews',
-            'Fitzrovia',
-            'London',
-            'London',
-            'W1T 3HF',
-            'UK'], [
-            '0044', '02073233888'
-        ]);
+        $payment->customer = $this->customer($customer['email'], $customer['name']);
+//        $payment->shipping = $this->shipping([
+//            '14-17 Wells Mews',
+//            'Fitzrovia',
+//            'London',
+//            'London',
+//            'W1T 3HF',
+//            'UK'], [
+//            '0044', '02073233888'
+//        ]);
         $payment->billing_descriptor = new BillingDescriptor('Dynamic desc charge', 'City charge');
         $payment->amount = 30000;
         $payment->capture = true;
