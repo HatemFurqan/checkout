@@ -95,7 +95,7 @@ class RegisterController extends Controller
 
         if (is_null($student)){
             session()->flash('error', __('resubscribe.The students excuse is not in our records'));
-            return redirect()->back();
+            return redirect()->route('semester.registration.index');
         }
 
         if ($request->payment_method == 'checkout_gateway') {
@@ -135,7 +135,7 @@ class RegisterController extends Controller
         }
 
         session()->flash('success', __('resubscribe.The registration process has been completed successfully'));
-        return redirect()->back();
+        return redirect()->route('semester.registration.index');
     }
 
     /**

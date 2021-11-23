@@ -20,7 +20,7 @@ use Symfony\Component\Intl\Countries;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function()
 {
-    Route::get('/', [SemesterRegistrationController::class, 'index']);
+    Route::get('/', [SemesterRegistrationController::class, 'index'])->name('semester.registration.index');
     Route::post('/submit/re-subscribe', [RegisterController::class, 'resubscribe'])->name('submit.re-subscribe');
     Route::get('/semester-registration/get-student-info', [SemesterRegistrationController::class, 'getStudentInfo'])->name('semester.registration.getStudentInfo');
 });

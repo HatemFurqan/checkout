@@ -39,11 +39,11 @@ class SemesterRegistrationController extends Controller
                     session()->flash('error', __('resubscribe.Payment failed, please try again'));
                 }
 
-                return redirect()->back();
+                return redirect()->route('semester.registration.index');
             }catch (\GuzzleHttp\Exception\ClientException $e) {
 //                $response = $e->getResponse();
                 session()->flash('error', __('resubscribe.Payment failed, please try again'));
-                return redirect()->back();
+                return redirect()->route('semester.registration.index');
             }
 
         }
