@@ -121,6 +121,13 @@ class RegisterController extends Controller
             $redirection = $result->getRedirection();
             if ($redirection){
                 return Redirect::to($redirection);
+            }else{
+                if ($result->approved){
+                    session()->flash('success', __('resubscribe.The registration process has been completed successfully'));
+                }else{
+                    session()->flash('error', __('resubscribe.The students excuse is not in our records'));
+                }
+                return redirect()->route('semester.registration.index');
             }
 
         }else{
