@@ -43,10 +43,10 @@ class Checkout
         $response = $client->request('POST', '/payment-links',
             [
                 'json' => [
-                    "amount" => 30000,
+                    "amount" => 29500,
                 ], 'headers' => [
-                    'Authorization' => "pk_a6b33af2-dd97-4204-9df8-70bd81cfd9d0"
-                ]
+                'Authorization' => "pk_a6b33af2-dd97-4204-9df8-70bd81cfd9d0"
+            ]
             ]);
         $data = \GuzzleHttp\json_decode($response->getBody()->getContents());
         return $data->status;
@@ -77,7 +77,7 @@ class Checkout
 //            '0044', '02073233888'
 //        ]);
         $payment->billing_descriptor = new BillingDescriptor('Dynamic desc charge', 'City charge');
-        $payment->amount = 30000;
+        $payment->amount = 29500;
         $payment->capture = true;
         $payment->reference = $reference_number;
         $payment->success_url = 'https://reports.furqangroup.com/checkout';
