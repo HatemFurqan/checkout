@@ -27,9 +27,13 @@ class Checkout
 //    private $secret = 'sk_test_1e422a84-39e0-4f2d-a94a-11add28b638c';
 //    private $public = 'pk_test_4ad7b6d1-a4b0-442d-a230-5505ec5ca43b';
 
+//    private $sandbox = 'https://api.checkout.com/payments';
+//    private $secret = 'sk_f9b4d5dd-d1d0-4943-bdbf-e5cd88f37403';
+//    private $public = 'pk_a6b33af2-dd97-4204-9df8-70bd81cfd9d0';
+
     private $sandbox = 'https://api.checkout.com/payments';
-    private $secret = 'sk_f9b4d5dd-d1d0-4943-bdbf-e5cd88f37403';
-    private $public = 'pk_a6b33af2-dd97-4204-9df8-70bd81cfd9d0';
+    private $secret = 'sk_8cbe6cf1-3871-4c1c-ae84-cd49b7e2af90';
+    private $public = 'pk_562d50cb-b790-4b10-893b-641edb7df296';
 
     /**
      * not required
@@ -43,10 +47,10 @@ class Checkout
         $response = $client->request('POST', '/payment-links',
             [
                 'json' => [
-                    "amount" => 30000,
+                    "amount" => 29500,
                 ], 'headers' => [
-                    'Authorization' => "pk_a6b33af2-dd97-4204-9df8-70bd81cfd9d0"
-                ]
+                'Authorization' => "pk_562d50cb-b790-4b10-893b-641edb7df296"
+            ]
             ]);
         $data = \GuzzleHttp\json_decode($response->getBody()->getContents());
         return $data->status;
@@ -77,7 +81,7 @@ class Checkout
 //            '0044', '02073233888'
 //        ]);
         $payment->billing_descriptor = new BillingDescriptor('Dynamic desc charge', 'City charge');
-        $payment->amount = 30000;
+        $payment->amount = 29500;
         $payment->capture = true;
         $payment->reference = $reference_number;
         $payment->success_url = 'https://reports.furqangroup.com/checkout';

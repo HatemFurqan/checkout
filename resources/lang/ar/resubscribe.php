@@ -22,7 +22,7 @@ return [
     'Email' => 'البريد الالكتروني *',
     'terms and conditions' => 'أقر بصحة البيانات السابقة وبأنني اطلعت على كافة الشروط والأحكام وأتعهد بالاتزام بذلك.',
   'Payment via credit card' => 'السداد عبر جميع أنواع البطاقات الائتمانية ( مدى - فيزا - ماستر كارد - أمريكان اكبريس - أخرى)
- <br> إجمالي الرسوم الدراسية + البنكية = 300$ <span style="color: red;">هذا العرض لفترة محدودة</span>',
+ <br> إجمالي الرسوم الدراسية + البنكية = 295$ <span style="color: red;">هذا العرض لفترة محدودة</span>',
     'HSBC Bank' => 'تحويل دولي (بنك HSBC)---> إجمالي الرسوم الدراسية + البنكية = 310$',
     'Registration method' => 'طريقة التسجيل',
     'Bank name' => 'اسم البنك *',
@@ -37,9 +37,11 @@ return [
     'Transfer date' => 'تاريخ التحويل *',
     'Operation reference number' => 'الرقم المرجعي للعملية *',
     'Checkout' => 'إتمام الدفع',
-    'The students excuse is not in our records' => 'عذر الطالب غير موجود في سجلاتنا',
+    'The student ID is not in our records' => 'الرقم التسلسي للطالب غير موجود في سجلاتنا',
     'The registration process has been completed successfully' => 'تم إتمام عملية التسجيل بنجاح',
     'Required' => 'إلزامي *',
-    'Payment failed, please try again' => 'فشلت عملية الدفع، يرجى إعادة المحاولة',
+    'Payment failed' => 'فشلت عملية الدفع يرجى تجربة كارت آخر او التواصل مع خدمة العملاء من خلال help@furqangroup.com',
+    'Error' => 'خطأ',
+    'Error 419' => '',
 
 ];
