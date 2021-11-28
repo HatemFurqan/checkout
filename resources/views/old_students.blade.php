@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 
     <style>
 
@@ -306,7 +307,6 @@
                     @endif
 
                     <form id="msform" action="{{ route('submit.re-subscribe') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
 
                         <!-- progressbar -->
                         <ul id="progressbar" class="d-flex flex-row">
@@ -453,10 +453,10 @@
 
                                 <div class="form-group text-right">
                                     <label for="residence_country">{{ __('resubscribe.Country of Residence') }}</label>
-                                    <select class="form-control"name="residence_country" id="residence_country" required>
+                                    <select class="form-control" name="residence_country" id="residence_country" required>
                                         <option> - </option>
-                                        @foreach($countries as $key => $country)
-                                            <option value="{{ $country }}">{{ $country }}</option>
+                                        @foreach($countries as $country)
+                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -597,6 +597,7 @@
                             <div class="card-frame"></div>
                             <button class="btn btn-primary" id="pay-button" disabled>
                                 {{ __('resubscribe.Checkout') }}
+                                <i class="fas fa-spinner fa-spin d-none"></i>
                             </button>
                         </div>
                         <p class="error-message text-center"></p>
@@ -638,7 +639,7 @@
 
     <!-- add frames script -->
 <script src="https://cdn.checkout.com/js/framesv2.min.js"></script>
-<script src="{{ asset('app.js') }}?v=2.13"></script>
+<script src="{{ asset('app.js') }}?v=3.32"></script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

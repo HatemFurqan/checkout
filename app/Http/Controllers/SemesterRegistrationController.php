@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Imports\StudentImport;
+use App\Models\Country;
 use App\Models\Student;
 use App\Models\Subscribe;
 use App\Service\Payment\Checkout;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Symfony\Component\Intl\Countries;
 use function GuzzleHttp\json_decode;
 
 class SemesterRegistrationController extends Controller
 {
+
     public function index()
     {
         if(request()->query('cko-session-id')){
@@ -23,7 +23,7 @@ class SemesterRegistrationController extends Controller
                 $response = $client->request('GET', '/payments/' . request()->query('cko-session-id'),
                     [
                         'headers' => [
-                            'Authorization' => "sk_f9b4d5dd-d1d0-4943-bdbf-e5cd88f37403"
+                            'Authorization' => "sk_8cbe6cf1-3871-4c1c-ae84-cd49b7e2af90"
                         ]
                     ]);
 
@@ -39,22 +39,22 @@ class SemesterRegistrationController extends Controller
                     if ($data->approved){
                         session()->flash('success', __('resubscribe.The registration process has been completed successfully'));
                     }else{
-                        session()->flash('error', __('resubscribe.Payment failed, please try again'));
+                        session()->flash('error', __('resubscribe.Payment failed'));
                     }
 
                 }else{
-                    session()->flash('error', __('resubscribe.Payment failed, please try again'));
+                    session()->flash('error', __('resubscribe.Payment failed'));
                 }
 
                 return redirect()->route('semester.registration.index');
             }catch (\GuzzleHttp\Exception\ClientException $e) {
 //                $response = $e->getResponse();
-                session()->flash('error', __('resubscribe.Payment failed, please try again'));
+                session()->flash('error', __('resubscribe.Payment failed'));
                 return redirect()->route('semester.registration.index');
             }
         }
 
-        $countries = Countries::getNames(App::getLocale());
+        $countries = Country::query()->where('lang', '=', App::getLocale())->get();
         return view('old_students', ['countries' => $countries]);
     }
 

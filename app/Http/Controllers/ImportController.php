@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\CountryImport;
 use App\Imports\StudentImport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -20,5 +21,13 @@ class ImportController extends Controller
 
         dd('Import Done');
     }
+
+    public function importCountries()
+    {
+        Excel::import(new CountryImport(), 'countries.xlsx');
+
+        dd('Import Done');
+    }
+
 
 }

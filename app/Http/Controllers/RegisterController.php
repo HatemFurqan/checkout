@@ -69,9 +69,9 @@ class RegisterController extends Controller
         $request->validate([
             'payment_method' => 'required|string',
             'student_number' => 'required|numeric',
-            'section'      => 'required|numeric',
-            'student_name' => 'required|string',
-            'residence_country' => 'required|string',
+            'section'        => 'required|numeric',
+            'student_name'   => 'required|string',
+            'residence_country' => 'required|exists:countries,id',
             'email' => 'required|email',
         ]);
 
@@ -95,7 +95,7 @@ class RegisterController extends Controller
             ->first();
 
         if (is_null($student)){
-            session()->flash('error', __('resubscribe.The students excuse is not in our records'));
+            session()->flash('error', __('resubscribe.The student ID is not in our records'));
             return redirect()->route('semester.registration.index');
         }
 
@@ -106,7 +106,7 @@ class RegisterController extends Controller
 
             $subscribe = Subscribe::query()->create([
                 'student_id' => $student->id,
-                'residence_country' => $request->residence_country,
+                'country_id' => $request->residence_country,
                 'email' => $request->email,
                 'payment_method' => 'checkout_gateway',
                 'payment_id' => Session::get('payment_id'),
@@ -125,7 +125,7 @@ class RegisterController extends Controller
                 if ($result->approved){
                     session()->flash('success', __('resubscribe.The registration process has been completed successfully'));
                 }else{
-                    session()->flash('error', __('resubscribe.The students excuse is not in our records'));
+                    session()->flash('error', __('resubscribe.Payment failed!'));
                 }
                 return redirect()->route('semester.registration.index');
             }
@@ -133,7 +133,7 @@ class RegisterController extends Controller
         }else{
             $subscribe = Subscribe::query()->create([
                 'student_id' => $student->id,
-                'residence_country' => $request->residence_country,
+                'country_id' => $request->residence_country,
                 'email' => $request->email,
                 'payment_method' => $request->payment_method,
                 'money_transfer_image_path' => $request->file('money_transfer_image_path')->store('public/money_transfer_images'),

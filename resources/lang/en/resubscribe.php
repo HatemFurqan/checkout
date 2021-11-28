@@ -36,8 +36,10 @@ return [
     'Operation reference number' => 'Operation reference number',
     'Checkout' => 'Checkout',
     'Search' => 'Search',
-    'The students excuse is not in our records' => 'The student excuse is not in our records',
+    'The student ID is not in our records' => 'The student ID is not in our records',
     'The registration process has been completed successfully' => 'The registration process has been completed successfully',
     'Required' => 'Required *',
-    'Payment failed, please try again' => 'Payment failed, please try again',
+    'Payment failed' => 'Payment failed, please try a different card or reach us support via help@furqangroup.com',
+    'Error' => 'Error',
+    'Error 419' => '',
 ];

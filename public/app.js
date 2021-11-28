@@ -3,7 +3,7 @@ var payButton = document.getElementById("pay-button");
 var form = document.getElementById("payment-form");
 var errorStack = [];
 
-Frames.init("pk_a6b33af2-dd97-4204-9df8-70bd81cfd9d0");
+Frames.init("pk_562d50cb-b790-4b10-893b-641edb7df296");
 
 Frames.addEventHandler(
     Frames.Events.CARD_VALIDATION_CHANGED,
@@ -68,9 +68,11 @@ function onCardTokenized(event) {
     // el.innerHTML = '<span class="success">' + "يمكنكم متابعة التسجيل بالنقر على زر الارسال بالاسفل" + "</span>";
     $('#token_pay').val(event.token);
 
+    $('#pay-button .fa-spinner').removeClass('d-none');
+
     setTimeout(function(){
         $('#msform').submit();
-    }, 2000);
+    }, 1000);
 
 }
 
