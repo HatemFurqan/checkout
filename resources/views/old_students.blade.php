@@ -307,6 +307,7 @@
                     @endif
 
                     <form id="msform" action="{{ route('submit.re-subscribe') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
 
                         <!-- progressbar -->
                         <ul id="progressbar" class="d-flex flex-row">

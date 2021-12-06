@@ -28,6 +28,25 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
 });
 
 
-Route::get('/test', function (\App\Services\GoogleSheet $googleSheet){
+ Route::get('/test', function (\App\Services\GoogleSheet $googleSheet){
 
-});
+     $subscibtion = \App\Models\Subscribe::query()
+         ->where('id', '=', 112)
+         ->first();
+
+     $result = $subscibtion->update([
+         'payment_method' => 'checkout_gateway',
+     ]);
+
+     if ($result){
+         event('eloquent.updated: App\Models\Subscribe', $subscibtion);
+     }
+
+ });
+
+// Route::get('symlink', function(){
+//     $targetFolder =  '/home/customer/www/furqanshop.com/eservices_checkout_app/storage/app/public';
+//     $linkFolder   =  '/home/customer/www/furqanshop.com/public_html/eservices_checkout/storage';
+//     symlink($targetFolder, $linkFolder);
+//     echo 'Symlink process successfully completed';
+// });

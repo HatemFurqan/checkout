@@ -27,11 +27,14 @@ class Subscribe extends Model
 
     public static function booted()
     {
-
         static::created(function($subscribe) {
-
             $created_at = Carbon::parse($subscribe->created_at)->timezone('Asia/Riyadh')->format('Y-m-d H:i:s');
             $created_at_formatted = Carbon::parse($subscribe->created_at)->timezone('Asia/Riyadh')->format('Y-m-d');
+
+            $image_path = '-';
+            if($subscribe->money_transfer_image_path){
+                $image_path = url(Storage::url($subscribe->money_transfer_image_path));
+            }
 
             $googleSheet = new GoogleSheet();
             $values = [
@@ -40,18 +43,41 @@ class Subscribe extends Model
                     'أقرّ باطلاعي نظام التعليم عن بعد الخاص بالمركز.', 'نعم',
                     $subscribe->student->section == 1 ? 'بنين' : 'بنات', $subscribe->student->serial_number ?? '-',
                     $subscribe->student->name ?? '-', $subscribe->country->name, $subscribe->email,
-                    url(Storage::url($subscribe->money_transfer_image_path)) ?? '-', $subscribe->bank_name ?? '-', $subscribe->account_owner ?? '-',
+                    $image_path ?? '-', $subscribe->bank_name ?? '-', $subscribe->account_owner ?? '-',
                     $subscribe->transfer_date ?? '-', $subscribe->bank_reference_number ?? '-', $subscribe->payment_method ?? '-',
-                    $subscribe->payment_id ?? '-',
-
+                    $subscribe->payment_id ?? '-', $subscribe->payment_status ?? '-',
                 ],
             ];
 
             $googleSheet->saveDataToSheet($values);
-            dd($values);
-
         });
 
+        static::updated(function($subscribe) {
+            if ($subscribe->payment_method == 'checkout_gateway'){
+                $created_at = Carbon::parse($subscribe->created_at)->timezone('Asia/Riyadh')->format('Y-m-d H:i:s');
+                $created_at_formatted = Carbon::parse($subscribe->created_at)->timezone('Asia/Riyadh')->format('Y-m-d');
+
+                $image_path = '-';
+                if($subscribe->money_transfer_image_path){
+                    $image_path = url(Storage::url($subscribe->money_transfer_image_path));
+                }
+
+                $googleSheet = new GoogleSheet();
+                $values = [
+                    [
+                        $created_at  ?? '-', $subscribe->reference_number  ?? '-', $created_at_formatted ?? '-',
+                        'أقرّ باطلاعي نظام التعليم عن بعد الخاص بالمركز.', 'نعم',
+                        $subscribe->student->section == 1 ? 'بنين' : 'بنات', $subscribe->student->serial_number ?? '-',
+                        $subscribe->student->name ?? '-', $subscribe->country->name, $subscribe->email,
+                        $image_path, $subscribe->bank_name ?? '-', $subscribe->account_owner ?? '-',
+                        $subscribe->transfer_date ?? '-', $subscribe->bank_reference_number ?? '-', $subscribe->payment_method ?? '-',
+                        $subscribe->payment_id ?? '-', $subscribe->payment_status ?? '-',
+                    ],
+                ];
+
+                $googleSheet->saveDataToSheet($values);
+            }
+        });
 
     }
 }
