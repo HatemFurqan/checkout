@@ -30,18 +30,11 @@ class SemesterRegistrationController extends Controller
                 $data = json_decode($response->getBody()->getContents());
 
                 if ($response->getStatusCode() != 404){
-
-                    $subscribe = Subscribe::query()
+                    Subscribe::query()
                         ->where('payment_id', '=', $data->id)
-                        ->first();
-
-                    $result = $subscribe->update([
+                        ->update([
                             'payment_status' => $data->status
                         ]);
-
-//                    if ($result){
-//                        event('eloquent.updated: App\Models\Subscribe', $subscribe);
-//                    }
 
                     if ($data->approved){
                         session()->flash('success', __('resubscribe.The registration process has been completed successfully'));
