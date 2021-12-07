@@ -145,7 +145,7 @@
             </div>
             <h2>{{ __('resubscribe.Error') }} 419</h2>
         </div>
-        <p>{{ __('resubscribe.Error 419') }} <a href="mailto:help@furqangroup.com">help@furqangroup.com</a></p>
+        <p>{{ __('resubscribe.Error 419') }}</p>
     </div>
 </div>
 
