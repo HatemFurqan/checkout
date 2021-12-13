@@ -33,7 +33,8 @@ class SemesterRegistrationController extends Controller
                     Subscribe::query()
                         ->where('payment_id', '=', $data->id)
                         ->update([
-                            'payment_status' => $data->status
+                            'payment_status' => $data->status,
+                            'response_code'  => $data->actions['response_code'],
                         ]);
 
                     if ($data->approved){
