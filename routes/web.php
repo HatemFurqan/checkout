@@ -1,11 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SemesterRegistrationController;
 use App\Http\Controllers\ImportController;
-use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Route;
-use Symfony\Component\Intl\Countries;
+use App\Http\Controllers\CouponController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +24,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
     Route::get('/semester-registration/get-student-info', [SemesterRegistrationController::class, 'getStudentInfo'])->name('semester.registration.getStudentInfo');
     Route::get('/importCountries', [ImportController::class, 'importCountries']);
 
+    // apply coupon
+    Route::get('/apply-coupon', [CouponController::class, 'applyCoupon'])->name('apply.coupon');
 });
 
 
