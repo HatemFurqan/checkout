@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 
+
     <style>
 
     * {
@@ -40,6 +41,7 @@
     @endif
 
     #heading {
+<<<<<<< Updated upstream
         text-transform: uppercase;
         color: #25408F;
         font-weight: normal
@@ -259,6 +261,248 @@
         object-fit: cover
     }
 </style>
+=======
+            text-transform: uppercase;
+            color: #25408F;
+            font-weight: normal
+        }
+
+        #msform {
+            text-align: center;
+            position: relative;
+            margin-top: 20px;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        #std-name {
+            cursor: default !important;
+        }
+
+        #msform fieldset {
+            background: white;
+            border: 0 none;
+            border-radius: 0.5rem;
+            box-sizing: border-box;
+            width: 100%;
+            margin: 0;
+            padding-bottom: 20px;
+            position: relative
+        }
+
+        .form-card {
+            text-align: left
+        }
+
+        #msform fieldset:not(:first-of-type) {
+            display: none
+        }
+
+        #msform input,
+        #msform textarea {
+            padding: 8px 15px 8px 15px;
+            border: 1px solid #ccc;
+            border-radius: 0px;
+            margin-bottom: 25px;
+            margin-top: 2px;
+            width: 100%;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+            color: #2C3E50;
+            background-color: #ECEFF1;
+            font-size: 16px;
+            letter-spacing: 1px
+        }
+
+        #msform input:focus,
+        #msform textarea:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            border: 1px solid #25408F;
+            outline-width: 0
+        }
+
+        #msform .action-button {
+            width: 100px;
+            background: #25408F;
+            font-weight: bold;
+            color: white;
+            border: 0 none;
+            border-radius: 0px;
+            cursor: pointer;
+            padding: 10px 5px;
+            margin: 10px 0px 10px 5px;
+            float: right
+        }
+
+        #msform .action-button:hover,
+        #msform .action-button:focus {
+            background-color: #311B92
+        }
+
+        #msform .action-button-previous {
+            width: 100px;
+            background: #616161;
+            font-weight: bold;
+            color: white;
+            border: 0 none;
+            border-radius: 0px;
+            cursor: pointer;
+            padding: 10px 5px;
+            margin: 10px 5px 10px 0px;
+            float: right
+        }
+
+        #msform .action-button-previous:hover,
+        #msform .action-button-previous:focus {
+            background-color: #000000
+        }
+
+        .card {
+            z-index: 0;
+            border: none;
+            position: relative
+        }
+
+        .fs-title {
+            font-size: 25px;
+            color: #25408F;
+            margin-bottom: 15px;
+            font-weight: normal;
+            text-align: left
+        }
+
+        .purple-text {
+            color: #25408F;
+            font-weight: normal
+        }
+
+        .steps {
+            font-size: 25px;
+            color: gray;
+            margin-bottom: 10px;
+            font-weight: normal;
+            text-align: right
+        }
+
+        .fieldlabels {
+            color: gray;
+            text-align: left
+        }
+
+        #progressbar {
+            margin-bottom: 30px;
+            overflow: hidden;
+            color: lightgrey
+        }
+
+        #progressbar .active {
+            color: #25408F
+        }
+
+        #progressbar li {
+            list-style-type: none;
+            font-size: 15px;
+            width: 33%;
+            float: left;
+            position: relative;
+            font-weight: 400
+        }
+
+        #progressbar #account:before {
+            font-family: FontAwesome;
+            content: "\f13e"
+        }
+
+        #progressbar #personal:before {
+            font-family: FontAwesome;
+            content: "\f007"
+        }
+
+        #progressbar #payment:before {
+            font-family: FontAwesome;
+            content: "\f030"
+        }
+
+        #progressbar #confirm:before {
+            font-family: FontAwesome;
+            content: "\f09d"
+        }
+
+        #progressbar li:before {
+            width: 50px;
+            height: 50px;
+            line-height: 45px;
+            display: block;
+            font-size: 20px;
+            color: #ffffff;
+            background: lightgray;
+            border-radius: 50%;
+            margin: 0 auto 10px auto;
+            padding: 2px
+        }
+
+        #progressbar li:after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: lightgray;
+            position: absolute;
+            left: 0;
+            top: 25px;
+            z-index: -1
+        }
+
+        #msform label {
+            color: black !important;
+            font-weight: bold !important;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        #msform #checks-section label {
+            color: black !important;
+        }
+
+        #progressbar li.active:before,
+        #progressbar li.active:after {
+            background: #25408F
+        }
+
+        .progress {
+            height: 20px
+        }
+
+        .progress-bar {
+            background-color: #25408F
+        }
+
+        .fit-image {
+            width: 100%;
+            object-fit: cover
+        }
+
+        #top-nav-links .nav-item {
+            margin: 5px;
+        }
+        #top-nav-links .nav-item a {
+            background: transparent !important;
+            border-color: transparent !important;
+            color: #f68b32 !important;
+            font-size: 13px;
+            font-weight: bold;
+            font-family: Cairo;
+        }
+
+        .input-time {
+            width: auto !important;
+        }
+
+        .label-time {
+            margin-right: 20px !important;
+        }
+
+    </style>
+>>>>>>> Stashed changes
 
     <style>*,*::after,*::before{box-sizing:border-box}html{padding:1rem;background-color:#FFF;font-family: 'Cairo', sans-serif;, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif}#payment-form{width:31.5rem;margin:0 auto}iframe{width:100%}.one-liner{display:flex;flex-direction:column}#pay-button{border:none;border-radius:3px;color:#FFF;font-weight:500;height:40px;width:100%;background-color:#13395E;box-shadow:0 1px 3px 0 rgba(19,57,94,0.4)}#pay-button:active{background-color:#0B2A49;box-shadow:0 1px 3px 0 rgba(19,57,94,0.4)}#pay-button:hover{background-color:#15406B;box-shadow:0 2px 5px 0 rgba(19,57,94,0.4)}#pay-button:disabled{background-color:#697887;box-shadow:none}#pay-button:not(:disabled){cursor:pointer}.card-frame{border:solid 1px #13395E;border-radius:3px;width:100%;margin-bottom:8px;height:40px;box-shadow:0 1px 3px 0 rgba(19,57,94,0.2)}.card-frame.frame--rendered{opacity:1}.card-frame.frame--rendered.frame--focus{border:solid 1px #13395E;box-shadow:0 2px 5px 0 rgba(19,57,94,0.15)}.card-frame.frame--rendered.frame--invalid{border:solid 1px #D96830;box-shadow:0 2px 5px 0 rgba(217,104,48,0.15)}.success-payment-message{color:#13395E;line-height:1.4}.token{color:#b35e14;font-size:0.9rem;font-family: 'Cairo', sans-serif;}@media screen and (min-width: 31rem){.one-liner{flex-direction:row}.card-frame{width:318px;margin-bottom:0}#pay-button{width:175px;margin-left:8px}}</style>
 
@@ -300,6 +544,7 @@
                         </div>
                     @endif
 
+<<<<<<< Updated upstream
                     @if(session('error'))
                         <div class="alert alert-danger" role="alert">
                             {{ session('error') }}
@@ -372,9 +617,56 @@
                                         <span class="d-block" style="color: #bb271a; font-weight: bold;">
                                             To register in the one-to-one classes, you can register in the waiting list. <a href="https://fg2020.com/HK/pages/349">click here</a>
                                         </span>
+=======
+        </div>
+    </nav>
+
+    <div class="alert alert-danger d-none" id="support-cookies" style="text-align: center;font-weight: bold;">{!! __('Support Cookies') !!}</div>
+
+    <div class="row justify-content-center">
+        <div class="col-11 col-sm-9 col-md-7 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <h2 id="heading">{{ __('Second semester 2022') }}</h2>
+
+                <form id="msform" action="{{ route('submit.re-subscribe') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+
+                <!-- progressbar -->
+                    <ul id="progressbar" class="d-flex flex-row">
+                        <li class="active" id="account"><strong>{{ __('resubscribe.Information and notes') }}</strong></li>
+                        <li id="personal"><strong>{{ __('resubscribe.Register') }}</strong></li>
+                        <li id="confirm"><strong>{{ __('resubscribe.Payment and termination') }}</strong></li>
+                    </ul>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <br>
+                    <!-- fieldsets -->
+                    <fieldset>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h2 class="fs-title text-center">{{ __('resubscribe.General information') }}</h2>
+                                </div>
+                            </div>
+                             <p class="{{ app()->getLocale() == 'ar' ? 'text-right' : '' }}">
+                                    <span class="d-block">
+                                        {{ __('announce the beginning of registration for the second semester') }}
+                                    </span>
+
+                                     <br>
+<<<<<<< Updated upstream
+
+                                     <span class="d-block" style="color: #bb271a; font-weight: bold;">{{ __('Note') }}</span>
+                                    <span class="d-block" style="color: #bb271a; font-weight: bold;">
+                                            {{ __('To register in the one-to-one classes, you can register in the waiting list') }}
+                                        <a href="{{ __('https://form.jotform.com/211934828471461') }}">{{ __('click here') }}</a>
+                                    </span>
+>>>>>>> Stashed changes
 
                                         <br>
 
+<<<<<<< Updated upstream
                                         <span class="d-block">
                                             If you had any questions regarding the payment options and methods, we would like to inform you that you can visit our virtual office where we have assigned one of our representatives from the financial department to answer your questions and help you with that.
                                         </span>
@@ -398,6 +690,14 @@
                                         <span class="w-100 text-center d-block" style="color: #bb271a; font-weight: bold;">
                                             at
                                         </span>
+=======
+
+                                     <span class="d-block" style="color: #bb271a; font-weight: bold;">{{ __('Note') }}</span>
+                                    <span class="d-block" style="color: #bb271a; font-weight: bold;">
+                                            {{ __('To register in the one-to-one classes, you can register in the waiting list') }}
+                                        <a href="{{ __('https://form.jotform.com/211934828471461') }}">{{ __('click here') }}</a>
+                                    </span>
+>>>>>>> Stashed changes
 
                                         <ul>
                                             <li>09:00AM - 10:00PM Mecca time (GMT + 3)</li>
@@ -405,12 +705,61 @@
                                             <li>02:00AM - 03:00PM New York time (GMT-5)</li>
                                         </ul>
 
+<<<<<<< Updated upstream
                                         <span class="w-100 text-center d-block" style="color: black; font-weight: bold;">
                                             We wish you all good health and success by Allah will.
                                         </span>
 
                                     </p>
                                 @endif
+=======
+                                    <span class="d-block">
+                                        {{ __('questions regarding the payment options and methods') }}
+                                    </span>
+
+                                     <br>
+                                     <span class="w-100 text-center d-block" style="color: #bb271a; font-weight: bold;">
+                                            {{ __('virtual office link') }}
+                                    </span>
+
+=======
+                                    <span class="d-block">
+                                        {{ __('questions regarding the payment options and methods') }}
+                                    </span>
+
+                                     <br>
+                                     <span class="w-100 text-center d-block" style="color: #bb271a; font-weight: bold;">
+                                            {{ __('virtual office link') }}
+                                    </span>
+
+>>>>>>> Stashed changes
+                                    <a class="w-100 text-center d-block" href="{{ __('https://furqangroup.zoom.us/j/99947595293') }}">
+                                        {{ __('https://furqangroup.zoom.us/j/99947595293') }}
+                                    </a>
+                                    <br>
+
+                                    <span class="w-100 text-center d-block" style="color: #bb271a; font-weight: bold;">
+                                            {{ __('Virtual office times') }}
+                                        </span>
+
+                                    <span class="w-100 text-center d-block" style="color: #48742b; font-weight: bold;">
+                                            {{ __('From Sunday till Thursday') }}
+                                    </span>
+                                <ul class="{{ app()->getLocale() == 'ar' ? 'text-right' : '' }}">
+                                    <li>{{ __('09:00AM - 10:00PM Mecca time (GMT + 3)') }}</li>
+                                    <li>{{ __('08:00AM - 09:00PM Morocco and France time (GMT+1)') }}</li>
+                                    <li>{{ __('02:00AM - 03:00PM New York time (GMT-5)') }}</li>
+                                </ul>
+
+                                <span class="w-100 text-center d-block" style="color: black; font-weight: bold;">
+                                            {{ __('We wish you all good health and success by Allah will.') }}
+                                </span>
+
+                            </p>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
                             </div>
 
@@ -461,6 +810,7 @@
                                     </select>
                                 </div>
 
+<<<<<<< Updated upstream
                                 <div class="form-group text-right">
                                     <label for="std-email">{{ __('resubscribe.Email') }}</label>
                                     <input type="email" class="form-control" name="email" id="std-email" placeholder="{{ __('resubscribe.Email') }}" required>
@@ -469,6 +819,109 @@
                                     <label for="std-email-conf">{{ __('resubscribe.Confirm Email') }}</label>
                                     <input type="email" class="form-control" id="std-email-conf" placeholder="{{ __('resubscribe.Confirm Email') }}" required>
                                 </div>
+=======
+                            <div class="form-group text-right">
+                                <label for="std-email">{{ __('resubscribe.Email') }}</label>
+                                <input type="email" class="form-control" name="email" id="std-email" placeholder="{{ __('resubscribe.Email') }}" required>
+                            </div>
+                            <div class="form-group text-right">
+                                <label for="std-email-conf">{{ __('resubscribe.Confirm Email') }}</label>
+                                <input type="email" class="form-control" id="std-email-conf" placeholder="{{ __('resubscribe.Confirm Email') }}" required>
+                            </div>
+                            <div class="form-check d-flex align-items-center">
+                                <label class="form-check-label" for="flexCheckIndeterminate">
+                                    {{ __('Do you want to change the current period') }}
+                                </label>
+                                <input class="form-check-input" style="margin: 0 !important;" type="checkbox" id="change-current-period">
+<<<<<<< Updated upstream
+=======
+                            </div>
+
+                            <br>
+                            <div id="favorite_times" class="d-none">
+                                <label for="std-email-conf" class="text-right w-100 label-right">{{ __('Choose your preferred schedule') }}</label>
+                                <div class="form-group text-right">
+                                    <input class="form-check-input input-time" type="radio" name="favorite_time" id="{{ __('Morning Session | 09:00 am - 12:00 pm GMT+3') }}" value="{{ __('Morning Session | 09:00 am - 12:00 pm GMT+3') }}">
+                                    <label class="form-check-label label-time" for="{{ __('Morning Session | 09:00 am - 12:00 pm GMT+3') }}">
+                                        {{ __('Morning Session | 09:00 am - 12:00 pm GMT+3') }}
+                                    </label>
+                                </div>
+                                <div class="form-group text-right">
+                                    <input class="form-check-input input-time" type="radio" name="favorite_time" id="{{ __('Evening Session 1 | 03:00 pm - 06:00 pm GMT+3') }}" value="{{ __('Evening Session 1 | 03:00 pm - 06:00 pm GMT+3') }}">
+                                    <label class="form-check-label label-time" for="{{ __('Evening Session 1 | 03:00 pm - 06:00 pm GMT+3') }}">
+                                        {{ __('Evening Session 1 | 03:00 pm - 06:00 pm GMT+3') }}
+                                    </label>
+                                </div>
+                                <div class="form-group text-right">
+                                    <input class="form-check-input input-time" type="radio" name="favorite_time" id="{{ __('Evening Session 2 | 07:00 pm - 10:00 pm GMT+3') }}" value="{{ __('Evening Session 2 | 07:00 pm - 10:00 pm GMT+3') }}">
+                                    <label class="form-check-label label-time" for="{{ __('Evening Session 2 | 07:00 pm - 10:00 pm GMT+3') }}">
+                                        {{ __('Evening Session 2 | 07:00 pm - 10:00 pm GMT+3') }}
+                                    </label>
+                                </div>
+                                <div class="form-group text-right">
+                                    <input class="form-check-input input-time" type="radio" name="favorite_time" id="{{ __('Evening Session 3 | 11:00 pm - 02:00 am GMT+3') }}" value="{{ __('Evening Session 3 | 11:00 pm - 02:00 am GMT+3') }}">
+                                    <label class="form-check-label label-time" for="{{ __('Evening Session 3 | 11:00 pm - 02:00 am GMT+3') }}">
+                                        {{ __('Evening Session 3 | 11:00 pm - 02:00 am GMT+3') }}
+                                    </label>
+                                </div>
+                                <div class="form-group text-right">
+                                    <input class="form-check-input input-time" type="radio" name="favorite_time" id="{{ __('Evening Session 4 | 02:00 am - 05:00 am GMT+3') }}" value="{{ __('Evening Session 4 | 02:00 am - 05:00 am GMT+3') }}">
+                                    <label class="form-check-label label-time" for="{{ __('Evening Session 4 | 02:00 am - 05:00 am GMT+3') }}">
+                                        {{ __('Evening Session 4 | 02:00 am - 05:00 am GMT+3') }}
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <input type="button" name="next" class="next action-button" value="{{ __('resubscribe.Next') }}" />
+                        <input type="button" name="previous" class="previous action-button-previous" value="{{ __('resubscribe.Previous') }}" />
+                    </fieldset>
+
+                    <fieldset id="checks-section">
+
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">{{ __('resubscribe.Payment and termination') }}</h2>
+                                </div>
+>>>>>>> Stashed changes
+                            </div>
+
+                            <br>
+                            <div id="favorite_times" class="d-none">
+                                <label for="std-email-conf" class="text-right w-100 label-right">{{ __('Choose your preferred schedule') }}</label>
+                                <div class="form-group text-right">
+                                    <input class="form-check-input input-time" type="radio" name="favorite_time" id="{{ __('Morning Session | 09:00 am - 12:00 pm GMT+3') }}" value="{{ __('Morning Session | 09:00 am - 12:00 pm GMT+3') }}">
+                                    <label class="form-check-label label-time" for="{{ __('Morning Session | 09:00 am - 12:00 pm GMT+3') }}">
+                                        {{ __('Morning Session | 09:00 am - 12:00 pm GMT+3') }}
+                                    </label>
+                                </div>
+                                <div class="form-group text-right">
+                                    <input class="form-check-input input-time" type="radio" name="favorite_time" id="{{ __('Evening Session 1 | 03:00 pm - 06:00 pm GMT+3') }}" value="{{ __('Evening Session 1 | 03:00 pm - 06:00 pm GMT+3') }}">
+                                    <label class="form-check-label label-time" for="{{ __('Evening Session 1 | 03:00 pm - 06:00 pm GMT+3') }}">
+                                        {{ __('Evening Session 1 | 03:00 pm - 06:00 pm GMT+3') }}
+                                    </label>
+                                </div>
+                                <div class="form-group text-right">
+                                    <input class="form-check-input input-time" type="radio" name="favorite_time" id="{{ __('Evening Session 2 | 07:00 pm - 10:00 pm GMT+3') }}" value="{{ __('Evening Session 2 | 07:00 pm - 10:00 pm GMT+3') }}">
+                                    <label class="form-check-label label-time" for="{{ __('Evening Session 2 | 07:00 pm - 10:00 pm GMT+3') }}">
+                                        {{ __('Evening Session 2 | 07:00 pm - 10:00 pm GMT+3') }}
+                                    </label>
+                                </div>
+                                <div class="form-group text-right">
+                                    <input class="form-check-input input-time" type="radio" name="favorite_time" id="{{ __('Evening Session 3 | 11:00 pm - 02:00 am GMT+3') }}" value="{{ __('Evening Session 3 | 11:00 pm - 02:00 am GMT+3') }}">
+                                    <label class="form-check-label label-time" for="{{ __('Evening Session 3 | 11:00 pm - 02:00 am GMT+3') }}">
+                                        {{ __('Evening Session 3 | 11:00 pm - 02:00 am GMT+3') }}
+                                    </label>
+                                </div>
+                                <div class="form-group text-right">
+                                    <input class="form-check-input input-time" type="radio" name="favorite_time" id="{{ __('Evening Session 4 | 02:00 am - 05:00 am GMT+3') }}" value="{{ __('Evening Session 4 | 02:00 am - 05:00 am GMT+3') }}">
+                                    <label class="form-check-label label-time" for="{{ __('Evening Session 4 | 02:00 am - 05:00 am GMT+3') }}">
+                                        {{ __('Evening Session 4 | 02:00 am - 05:00 am GMT+3') }}
+                                    </label>
+                                </div>
+                            </div>
+>>>>>>> Stashed changes
 
                             </div>
                             <input type="button" name="next" class="next action-button" value="{{ __('resubscribe.Next') }}" />
@@ -570,6 +1023,7 @@
                                         <input type="text" class="form-control" name="account_owner" id="account_owner" placeholder="{{ __('resubscribe.Account holder name (in English as it appears in the bank)') }}">
                                     </div>
 
+<<<<<<< Updated upstream
                                     <div class="form-group text-right">
                                         <label for="transfer_date">{{ __('resubscribe.Transfer date') }}</label>
                                         <input type="date" class="form-control" name="transfer_date" id="transfer_date">
@@ -579,6 +1033,13 @@
                                         <label for="bank_reference_number">{{ __('resubscribe.Operation reference number') }}</label>
                                         <input type="text" class="form-control" name="bank_reference_number" id="bank_reference_number" placeholder="{{ __('resubscribe.Operation reference number') }}">
                                     </div>
+=======
+                                <div class="form-group text-right">
+                                    <div class="alert alert-danger d-none" id="transfer-date-alert" role="alert">{{ __('The student must be 5 years old or over to register.') }}</div>
+                                    <label for="transfer_date">{{ __('resubscribe.Transfer date') }}</label>
+                                    <input type="date" class="form-control" name="transfer_date" id="transfer_date">
+                                </div>
+>>>>>>> Stashed changes
 
                                 </div>
 
@@ -661,6 +1122,32 @@
 
 <script>
     $(document).ready(function(){
+
+        $(document).on('click', 'form#msform #change-current-period', function (e) {
+            $('#favorite_times').toggleClass('d-none');
+
+            if ($('#favorite_times').hasClass('d-none')){
+                $('#favorite_times input[name="favorite_time"]').removeAttr('required');
+            }else {
+                $('#favorite_times input[name="favorite_time"]').prop('required', true);
+            }
+
+        });
+
+        $(document).on('change', 'form#msform input#transfer_date', function (e) {
+            let CurrentDateTime = new Date();
+            let transfer_date  = new Date($('form#msform input#transfer_date').val());
+
+            if(transfer_date <= CurrentDateTime){
+                $('#transfer-date-alert').addClass('d-none');
+                $('form#msform input#transfer_date').css('border-color', 'green');
+            }else{
+                $('#transfer-date-alert').removeClass('d-none');
+                $('form#msform input#transfer_date').css('border-color', 'red');
+                $('form#msform input#transfer_date').val('');
+            }
+
+        });
 
         var current_fs, next_fs, previous_fs; //fieldsets
         var opacity;
@@ -792,7 +1279,7 @@
                 $("#submit-main-form").removeClass('d-none');
             }else{
                 e.preventDefault();
-                alert('يجب عليك الموافقة على صحة البيانات السابقة')
+                alert('{{ __('You must agree that the previous information is correct') }}');
             }
         });
 
@@ -807,7 +1294,7 @@
                 $("#submit-main-form").addClass('d-none');
             }else{
                 e.preventDefault();
-                alert('يجب عليك الموافقة على صحة البيانات السابقة')
+                alert('{{ __('You must agree that the previous information is correct') }}');
             }
 
         });

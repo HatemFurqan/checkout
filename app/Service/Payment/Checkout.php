@@ -85,9 +85,21 @@ class Checkout
         $payment->amount = $amount;
         $payment->capture = true;
         $payment->reference = $reference_number;
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
         $payment->success_url = 'https://reports.furqangroup.com/checkout';
         $payment->failure_url = 'https://reports.furqangroup.com/checkout';
         $payment->threeDs = new ThreeDs(true);
+=======
+=======
+>>>>>>> Stashed changes
+        $payment->success_url = url('/thank-you');
+        $payment->failure_url = url('/thank-you');
+        $threeDs = new ThreeDs(true);
+        $threeDs->attempt_n3d = true;
+        $payment->threeDs = $threeDs;
+
+>>>>>>> Stashed changes
         $payment->risk = new Risk(false);
 //        $payment->setIdempotencyKey('123');
 
